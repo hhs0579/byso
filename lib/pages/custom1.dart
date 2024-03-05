@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/model/deskmodel.dart';
+import 'package:byso/pages/custom2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -590,20 +591,28 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                             SizedBox(
                               width: 10.w,
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: width * 0.115,
-                              height: height * 0.04,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                      color: Colors.white, width: 1)),
-                              child: AutoSizeText(
-                                '다음',
-                                maxFontSize: 18,
-                                style: TextStyle(
-                                    fontSize: 16.sp, color: Colors.black),
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const custom2()));
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: width * 0.115,
+                                height: height * 0.04,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(
+                                        color: Colors.white, width: 1)),
+                                child: AutoSizeText(
+                                  '다음',
+                                  maxFontSize: 18,
+                                  style: TextStyle(
+                                      fontSize: 16.sp, color: Colors.black),
+                                ),
                               ),
                             ),
                           ],
