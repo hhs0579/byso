@@ -1,10 +1,17 @@
+import 'package:byso/firebase_options.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -24,7 +31,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
             fontFamily: 'Pretendard',
           ),
-          home: const home(), // 클래스명은 대문자로 시작하는 것이 관례입니다.
+          home: const Splash(), // 클래스명은 대문자로 시작하는 것이 관례입니다.
         ),
       ),
     );

@@ -38,6 +38,8 @@ dependencies:
   provider:
   flutter_screenutil:
   auto_size_text:
+  firebase_core:
+  lottie:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -60,6 +62,7 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/lotties/
   fonts:
     - family: Pretendard
       fonts:

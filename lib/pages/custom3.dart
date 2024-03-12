@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:byso/%08widget/back.dart';
 import 'package:byso/%08widget/patternpicker.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/custom4.dart';
@@ -111,7 +112,20 @@ class custom3 extends StatelessWidget {
                     ),
                   ),
                   AutoSizeText(
-                    '견적 완료',
+                    '배송비 선택',
+                    maxFontSize: 18,
+                    style: TextStyle(
+                        color: const Color(0xff7D7D7D), fontSize: 14.sp),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[400],
+                    ),
+                  ),
+                  AutoSizeText(
+                    '최종 견적 확인',
                     maxFontSize: 18,
                     style: TextStyle(
                         color: const Color(0xff7D7D7D), fontSize: 14.sp),
@@ -189,7 +203,7 @@ class custom3 extends StatelessWidget {
                                     color: Colors.grey[400], fontSize: 16.sp),
                               ),
                               AutoSizeText(
-                                '${model.price}원',
+                                '${model.currentPrice}원',
                                 maxFontSize: 24,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
@@ -202,7 +216,7 @@ class custom3 extends StatelessWidget {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      Navigator.pop(context);
+                                      goBackToPreviousPage(context);
                                     },
                                     child: Container(
                                       alignment: Alignment.center,

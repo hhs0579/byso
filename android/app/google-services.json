@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "358030995038",
+    "project_id": "byso-a6393",
+    "storage_bucket": "byso-a6393.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358030995038:android:f2b30b4865351b2dcb4ecf",
+        "android_client_info": {
+          "package_name": "com.byso.byso"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk8Qfr5PXo2d_bfCZ4boiuopdGqjX6mYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

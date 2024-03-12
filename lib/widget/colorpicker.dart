@@ -10,14 +10,13 @@ class ColorPickerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = Provider.of<DeskCustomizationModel>(context);
     final availableColors = model.getAvailableColors(model.legType);
-    final selectedColor = model.legColor;
 
-    // 사용 가능한 색상이 하나뿐인 경우, 모델에서 이를 자동으로 선택
-    // WidgetsBinding.instance.addPostFrameCallback를 사용하여 프레임이 끝난 후 실행하도록 합니다.
-    if (availableColors.length == 1 &&
-        model.legColor != availableColors.first) {
+    // 사용 가능한 색상 중 첫 번째 색상을 기본값으로 설정
+    if (!availableColors.contains(model.legColor)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (model.legColor != availableColors.first) {
+        // 현재 선택된 색상이 사용 가능한 색상 목록에 없는 경우, 첫 번째 색상을 자동으로 선택
+        if (!availableColors.contains(model.legColor) &&
+            availableColors.isNotEmpty) {
           model.setLegColor(availableColors.first);
         }
       });
@@ -29,8 +28,8 @@ class ColorPickerWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(bottom: 15.h),
           child: Text(
-            model.legColor,
-            style: const TextStyle(color: Colors.white, fontSize: 20),
+            model.legColor.isNotEmpty ? model.legColor : "색상을 선택하세요",
+            style: TextStyle(color: Colors.white, fontSize: 20.sp),
           ),
         ),
         Wrap(
@@ -43,14 +42,17 @@ class ColorPickerWidget extends StatelessWidget {
                 model.setLegColor(color);
               },
               child: Container(
-                width: 50,
-                height: 50,
+                width: 50.w,
+                height: 50.h,
                 decoration: BoxDecoration(
-                  // 선택된 색상의 경우 배경을 회색으로, 그렇지 않은 경우 해당 색상을 배경색으로 설정
                   color: isSelected
                       ? Colors.grey
-                      : (color == "화이트" ? Colors.white : Colors.black),
-                  border: Border.all(color: Colors.black), // 모든 박스에 검은색 테두리 적용
+                      : color == "화이트"
+                          ? Colors.white
+                          : color == "브라운"
+                              ? Colors.brown
+                              : Colors.black,
+                  border: Border.all(color: Colors.black),
                 ),
                 child: isSelected
                     ? const Icon(Icons.check, color: Colors.white)
