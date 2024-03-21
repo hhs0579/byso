@@ -1,34 +1,55 @@
-import 'package:byso/%08widget/number.dart';
-import 'package:byso/model/deskmodel.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:byso/model/deskmodel.dart'; // Ensure this import points to where your model is located
 
-class ShippingRegionPickerWidget extends StatelessWidget {
-  const ShippingRegionPickerWidget({Key? key}) : super(key: key);
+class LengthPickerWidget extends StatelessWidget {
+  const LengthPickerWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     final model = Provider.of<DeskCustomizationModel>(context);
-    final availableShippingRegions = model.getAvailableShippingRegions();
+    final availableLengths = model.getAvailableLengths();
 
-    // 자동으로 첫 번째 배송 옵션 선택 (조건에 따라)
-    if (model.shippingRegion == '선택안함' && availableShippingRegions.isNotEmpty) {
+    // Optionally, automatically select the first length option if none is selected
+    if (model.selectedLength == '선택안함' && availableLengths.isNotEmpty) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (model.shippingRegion == '선택안함') {
-          model.setShippingRegion(availableShippingRegions.first);
+        if (model.selectedLength == '선택안함') {
+          model.setSelectedLength(availableLengths.first);
         }
       });
     }
 
+    bool isSarine = model.selectedLegType == '사리넨(정원형)' ||
+        model.selectedLegType == '사리넨(타원형)';
+
+    // 조건부 렌더링을 사용하여 사리넨일 때만 내용을 표시합니다.
+    if (!isSarine) {
+      return const SizedBox(); // 사리넨이 아닐 경우 아무것도 표시하지 않음
+    }
+
+    // 사리넨일 경우 길이 선택기 UI를 렌더링합니다.
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 30.h),
+        Container(color: Colors.grey[500], width: width * 0.25, height: 1),
+        SizedBox(height: 30.h),
+        Container(
+            alignment: Alignment.centerLeft,
+            child: AutoSizeText(
+              '가로길이(mm)',
+              maxFontSize: 18,
+              style: TextStyle(fontSize: 14.sp, color: Colors.white),
+            )),
         Column(
-          children: availableShippingRegions.map((region) {
-            bool isSelected = model.shippingRegion == region;
+          children: availableLengths.map((length) {
+            bool isSelected = model.selectedLength == length;
             return GestureDetector(
-              onTap: () => model.setShippingRegion(region),
+              onTap: () => model.setSelectedLength(length),
               child: Container(
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 child: Row(
@@ -52,13 +73,13 @@ class ShippingRegionPickerWidget extends StatelessWidget {
                               : Container(),
                         ),
                         const SizedBox(width: 8),
-                        Text(region,
+                        Text(length,
                             style: TextStyle(
                                 fontSize: 16.sp, color: Colors.white)),
                       ],
                     ),
                     Text(
-                      '+${formatPriceWithCommas(model.shippingCosts[region] ?? 0)}원',
+                      model.getLengthPriceInfo(length),
                       style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,

@@ -1,12 +1,14 @@
+import 'package:byso/%08widget/number.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DeskCustomizationModel with ChangeNotifier {
-  String _legType = '사리넨';
+  String _legType = '사리넨(정원형)';
   String _legColor = '선택안함';
   String _pattern = '선택안함';
   String shippingRegion = '선택안함';
   int currentPrice = 0;
+  String _selectedLength = '선택안함'; // Default value
   final List<Map<String, dynamic>> _selectionHistory = [];
 
   DeskCustomizationModel() {
@@ -16,6 +18,11 @@ class DeskCustomizationModel with ChangeNotifier {
   void _initializePrice() {
     _updateSelectionAndPrice();
   }
+
+  final String _selectedLegType = '사리넨(정원형)'; // 예시 초기값
+
+  // 선택된 레그 타입을 외부에서 접근할 수 있도록 getter 제공
+  String get selectedLegType => _selectedLegType;
 
   void _updateSelectionAndPrice() {
     // 현재 선택 상태를 이력에 추가
@@ -29,7 +36,13 @@ class DeskCustomizationModel with ChangeNotifier {
     _selectionHistory.add(currentSelection);
     calculateTotalPrice();
   }
-
+  void setSelectedLength(String length) {
+    if (_lengthPricesByType[_legType]?.containsKey(length) ?? false) {
+      _selectedLength = length;
+      _updateSelectionAndPrice();
+      notifyListeners();
+    }
+  }
   List<String> getAvailableShippingRegions() {
     return shippingCosts.keys.toList();
   }
@@ -41,14 +54,20 @@ class DeskCustomizationModel with ChangeNotifier {
   };
 
   final Map<String, int> _legTypePrices = {
-    '사리넨': 170000,
+    '사리넨(정원형)': 170000,
+    '사리넨(타원형)': 170000,
     '개트윅': 240000,
     '샹베리': 400000,
     '라고스': 400000,
-    '디디모스': 400000
+    '디디모스': 400000,
+    '리프 다이닝': 400000
   };
   final Map<String, Map<String, int>> _legTypeAndColorPrices = {
-    '사리넨': {
+    '사리넨(정원형)': {
+      '화이트': 0,
+      '블랙': 0,
+    },
+    '사리넨(타원형)': {
       '화이트': 0,
       '블랙': 0,
     },
@@ -71,7 +90,33 @@ class DeskCustomizationModel with ChangeNotifier {
       '블랙': 0
       // 예시: Type C에서 Black 선택 시 가격
     },
+    '리프 다이닝': {
+      '화이트': 0, // 예시: Type C에서 White 선택 시 가격
+
+      // 예시: Type C에서 Black 선택 시 가격
+    },
   };
+
+  final Map<String, Map<String, int>> _lengthPricesByType = {
+    '사리넨(정원형)': {
+      '900mm': 900000,
+      '1000mm': 1000000,
+      '1100mm': 1100000,
+      '1200mm': 1200000,
+      '1300mm': 1300000,
+      '1400mm': 1400000,
+      '1500mm': 1500000,
+    },
+    '사리넨(타원형)': {
+      '1600mm': 1000000,
+      '1700mm': 1100000,
+      '1800mm': 1200000,
+      '1900mm': 1300000,
+      '2000mm': 1400000,
+    },
+    // 다른 레그 타입에 대한 설정도 추가 가능
+  };
+
   List<String> getAvailableColors(String legType) {
     // _legTypeAndColorPrices 맵에서 주어진 레그 타입에 대한 색상 키들을 리스트로 반환
     // 해당 레그 타입에 대한 색상 정보가 없으면 빈 리스트 반환
@@ -105,20 +150,42 @@ class DeskCustomizationModel with ChangeNotifier {
     }
   }
 
+
+  List<String> getAvailableLengths() {
+    // 현재 선택된 레그 타입에 따라 길이 목록 반환
+    return _lengthPricesByType[_legType]?.keys.toList() ?? [];
+  }
+
   // 선택 변경 메서드
+  String getLengthPriceInfo(String length) {
+    // 현재 선택된 레그 타입에 맞는 가격 정보 사용
+    final price = _lengthPricesByType[_legType]?[length];
+    if (price != null) {
+      // 가격 정보가 있으면 포맷팅하여 반환
+      return '${formatPriceWithCommas(price)}원';
+    } else {
+      return '가격 정보 없음';
+    }
+  }
 
   final Map<String, String> _legTypeImages = {
-    '사리넨': 'assets/images/leg1.png',
+    '사리넨(정원형)': 'assets/images/leg1.png',
+    '사리넨(타원형)': 'assets/images/leg6.png',
     '개트윅': 'assets/images/leg2.png',
     '샹베리': 'assets/images/leg3.png',
     '라고스': 'assets/images/leg4.png',
-    '디디모스': 'assets/images/leg5.png'
+    '디디모스': 'assets/images/leg5.png',
+    '리프 다이닝': 'assets/images/leg7.png'
     // 필요한 경우 추가 타입에 대한 이미지 경로를 계속 추가
   };
   final Map<String, Map<String, String>> _legTypeAndColorImages = {
-    '사리넨': {
+    '사리넨(정원형)': {
       '화이트': 'assets/images/leg1.png',
       '블랙': 'assets/images/legA2.png',
+    },
+    '사리넨(타원형)': {
+      '화이트': 'assets/images/leg6.png',
+      '블랙': 'assets/images/leg6-2.png',
     },
     '개트윅': {
       '블랙': 'assets/images/leg2.png',
@@ -135,14 +202,40 @@ class DeskCustomizationModel with ChangeNotifier {
       '화이트': 'assets/images/leg5.png',
       '블랙': 'assets/images/leg5-2.png',
     },
+    '리프 다이닝': {
+      '블랙': 'assets/images/leg7.png',
+    },
     // 기타 레그 타입 및 컬러 조합에 대한 이미지 경로 추가...
   };
   final Map<String, Map<String, Map<String, String>>>
       legTypeColorToPatternImages = {
-    '사리넨': {
+    '사리넨(정원형)': {
       '화이트': {
         'None':
             'assets/images/leg1.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/te1.png',
+        '르누아르': 'assets/images/te2.png',
+        '클래식 스테추아리오': 'assets/images/te3.png',
+        '엑스트라 스타투아리오': 'assets/images/te4.png',
+        '칼라카타 오로': 'assets/images/te5.png',
+        '칼라카타 글로리': 'assets/images/te6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/legA2.png',
+        '칼라카타 마그니피코': 'assets/images/te1-2.png',
+        '르누아르': 'assets/images/te2-2.png',
+        '클래식 스테추아리오': 'assets/images/te3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/te4-2.png',
+        '칼라카타 오로': 'assets/images/te5-2.png',
+        '칼라카타 글로리': 'assets/images/te6-2.png',
+        // Add more patterns here
+      },
+    },
+    '사리넨(타원형)': {
+      '화이트': {
+        'None':
+            'assets/images/leg6.png', // Default image when no pattern is selected
         '칼라카타 마그니피코': 'assets/images/tp1.png',
         '르누아르': 'assets/images/tp2.png',
         '클래식 스테추아리오': 'assets/images/tp3.png',
@@ -152,7 +245,7 @@ class DeskCustomizationModel with ChangeNotifier {
         // Add more patterns here
       },
       '블랙': {
-        'None': 'assets/images/legA2.png',
+        'None': 'assets/images/leg6-2.png',
         '칼라카타 마그니피코': 'assets/images/tp1-2.png',
         '르누아르': 'assets/images/tp2-2.png',
         '클래식 스테추아리오': 'assets/images/tp3-2.png',
@@ -244,10 +337,23 @@ class DeskCustomizationModel with ChangeNotifier {
         // Add more patterns here
       },
     },
+    '리프 다이닝': {
+      '화이트': {
+        'None':
+            'assets/images/leg7.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/tf1.png',
+        '르누아르': 'assets/images/tf2.png',
+        '클래식 스테추아리오': 'assets/images/tf3.png',
+        '엑스트라 스타투아리오': 'assets/images/tf4.png',
+        '칼라카타 오로': 'assets/images/tf5.png',
+        '칼라카타 글로리': 'assets/images/tf6.png',
+        // Add more patterns here
+      },
+    },
     // Repeat for other leg types and colors
   };
   String get currentLegImage => _legTypeImages[_legType]!;
-
+  String get selectedLength => _selectedLength;
   String get currentPatternImage {
     // 레그 타입과 레그 컬러에 해당하는 패턴 이미지 맵을 찾습니다.
     final colorPatterns = legTypeColorToPatternImages[_legType]?[_legColor];
@@ -355,7 +461,7 @@ class DeskCustomizationModel with ChangeNotifier {
 
   void resetToDefault() {
     // 기본 선택으로 리셋
-    _legType = '사리넨';
+    _legType = '사리넨(정원형)';
     _legColor = '선택안함';
     _pattern = '선택안함';
     shippingRegion = '선택안함';
@@ -364,12 +470,12 @@ class DeskCustomizationModel with ChangeNotifier {
   }
 
   void calculateTotalPrice() {
-    // 현재 선택에 따라 가격 계산
     currentPrice = _legTypePrices[_legType] ?? 0;
     currentPrice += _legTypeAndColorPrices[_legType]?[_legColor] ?? 0;
     currentPrice += patternPrices[_pattern] ?? 0;
     currentPrice += shippingCosts[shippingRegion] ?? 0;
-    // 가격 업데이트 통지
+    final lengthPrice = _lengthPricesByType[_legType]?[_selectedLength];
+    currentPrice += lengthPrice ?? 0;
     notifyListeners();
   }
 

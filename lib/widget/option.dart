@@ -1,3 +1,4 @@
+import 'package:byso/%08widget/number.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,11 +16,6 @@ class SummaryWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          color: Colors.grey[500],
-          height: 1,
-          width: width,
-        ),
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildOptionItem('테이블 레그', model.legType,
@@ -67,7 +63,7 @@ class SummaryWidget extends StatelessWidget {
   Widget _buildOptionItem(
       String title, String value, String? imagePath, int optionPrice) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4.h),
+      padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Column(
         children: [
           Row(
@@ -75,13 +71,13 @@ class SummaryWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                style: TextStyle(color: Colors.white, fontSize: 14.sp),
               ),
               Row(
                 children: [
                   Text(
                     '옵션변경',
-                    style: TextStyle(color: Colors.grey[500], fontSize: 16.sp),
+                    style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
                   ),
                   Image.asset(
                     'assets/images/write.png',
@@ -92,6 +88,7 @@ class SummaryWidget extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 12.h), // 추가
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -100,20 +97,23 @@ class SummaryWidget extends StatelessWidget {
                   if (imagePath != null)
                     Image.asset(
                       imagePath,
-                      width: 24.w,
-                      height: 24.h,
+                      width: 40.w,
+                      height: 50.h,
                     ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
                   Text(value,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16.sp,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Text('$optionPrice',
+              Text(formatPriceWithCommas(optionPrice),
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold)),
             ],
           )
@@ -124,23 +124,53 @@ class SummaryWidget extends StatelessWidget {
 
   Widget _buildColorOptionItem(String title, String value, Color color) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      child: Column(
         children: [
-          Expanded(
-            child: Text(
-              "$title: $value",
-              style: TextStyle(color: Colors.white, fontSize: 16.sp),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: TextStyle(color: Colors.white, fontSize: 14.sp),
+              ),
+              Row(
+                children: [
+                  Text(
+                    '옵션변경',
+                    style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+                  ),
+                  Image.asset(
+                    'assets/images/write.png',
+                    width: 16.w,
+                    height: 16.h,
+                  )
+                ],
+              ),
+            ],
           ),
-          Container(
-            width: 24.w,
-            height: 24.h,
-            decoration: BoxDecoration(
-              color: color,
-              border: Border.all(color: Colors.white),
-            ),
+          SizedBox(height: 12.h), // 추
+          Row(
+            children: [
+              Container(
+                width: 35.w,
+                height: 50.h,
+                decoration: BoxDecoration(
+                  color: color,
+                  border: Border.all(color: Colors.white),
+                ),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+              Text(
+                value,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
         ],
       ),
