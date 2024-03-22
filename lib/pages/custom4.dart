@@ -198,152 +198,157 @@ class custom4 extends StatelessWidget {
               height: height,
               width: width * 0.6,
               child: Image.asset(
-                model.currentPatternImage, // 이미지 경로를 적절히 변경하세요.
+                model.getCurrentPatternImage2, // 이미지 경로를 적절히 변경하세요.
                 fit: BoxFit.contain,
                 scale: 4,
               ),
             ),
             Container(
-                color: const Color(0xff101010),
-                height: height,
-                width: width * 0.28,
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
-                    child: Column(
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: AutoSizeText(
-                            '부가정보를 선택해주세요',
-                            maxFontSize: 20,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ),
-                        if (model.selectedLegType == '사리넨(정원형)' ||
-                            model.selectedLegType == '사리넨(타원형)')
-                          const LengthPickerWidget(),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Container(
-                          color: Colors.grey[500],
-                          width: width * 0.25,
-                          height: 1,
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Container(
-                            alignment: Alignment.centerLeft,
-                            child: AutoSizeText(
-                              '배송비',
-                              maxFontSize: 18,
-                              style: TextStyle(
-                                  fontSize: 14.sp, color: Colors.white),
-                            )),
-                        const ShippingRegionPickerWidget(),
-                      ],
-                    ),
-                  ),
+              height: height,
+              width: width * 0.28,
+              color: const Color(0xff101010),
+              child: Column(
+                children: [
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: width,
-                          height: 1,
-                          color: Colors.grey[500],
-                        ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Container(
+                          child: Column(children: [
                         Container(
                           padding: EdgeInsets.only(
                               top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              AutoSizeText(
-                                '가격',
-                                textAlign: TextAlign.start,
-                                maxFontSize: 18,
-                                style: TextStyle(
-                                    color: Colors.grey[400], fontSize: 16.sp),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: AutoSizeText(
+                                  '부가정보를 선택해주세요',
+                                  maxFontSize: 20,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18.sp),
+                                ),
                               ),
-                              AutoSizeText(
-                                '${formatPriceWithCommas(model.currentPrice)}원',
-                                maxFontSize: 24,
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    fontSize: 22.sp, color: Colors.white),
+                              if (model.legType == '사리넨(정원형)' ||
+                                  model.legType == '사리넨(타원형)')
+                                const LengthPickerWidget(),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Container(
+                                color: Colors.grey[500],
+                                width: width * 0.25,
+                                height: 1,
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 30.h,
                               ),
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      goBackToPreviousPage(context);
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: width * 0.115,
-                                      height: height * 0.04,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          border: Border.all(
-                                              color: Colors.white, width: 1)),
-                                      child: AutoSizeText(
-                                        '이전',
-                                        maxFontSize: 18,
-                                        style: TextStyle(
-                                            fontSize: 16.sp,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.w,
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const custom5()));
-                                    },
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: width * 0.115,
-                                      height: height * 0.04,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          border: Border.all(
-                                              color: Colors.white, width: 1)),
-                                      child: AutoSizeText(
-                                        '다음',
-                                        maxFontSize: 18,
-                                        style: TextStyle(
-                                            fontSize: 16.sp,
-                                            color: Colors.black),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )
+                              Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: AutoSizeText(
+                                    '배송비',
+                                    maxFontSize: 18,
+                                    style: TextStyle(
+                                        fontSize: 14.sp, color: Colors.white),
+                                  )),
+                              const ShippingRegionPickerWidget(),
                             ],
                           ),
                         ),
-                      ],
+                      ])),
                     ),
                   ),
-                ])),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: width,
+                        height: 1,
+                        color: Colors.grey[500],
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AutoSizeText(
+                              '가격',
+                              textAlign: TextAlign.start,
+                              maxFontSize: 18,
+                              style: TextStyle(
+                                  color: Colors.grey[400], fontSize: 16.sp),
+                            ),
+                            AutoSizeText(
+                              '${formatPriceWithCommas(model.currentPrice)}원',
+                              maxFontSize: 24,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 22.sp, color: Colors.white),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    goBackToPreviousPage(context);
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: width * 0.115,
+                                    height: height * 0.04,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                            color: Colors.white, width: 1)),
+                                    child: AutoSizeText(
+                                      '이전',
+                                      maxFontSize: 18,
+                                      style: TextStyle(
+                                          fontSize: 16.sp, color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const custom5()));
+                                  },
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    width: width * 0.115,
+                                    height: height * 0.04,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(5),
+                                        border: Border.all(
+                                            color: Colors.white, width: 1)),
+                                    child: AutoSizeText(
+                                      '다음',
+                                      maxFontSize: 18,
+                                      style: TextStyle(
+                                          fontSize: 16.sp, color: Colors.black),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ]),
         ));
   }

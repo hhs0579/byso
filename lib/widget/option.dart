@@ -46,6 +46,21 @@ class SummaryWidget extends StatelessWidget {
           height: 1,
           width: width,
         ),
+        if (model.legType == '사리넨(정원형)' || model.legType == '사리넨(타원형)')
+          Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(10.w),
+                child: _buildOptionItem(
+                    '가로길이', model.selectedLength, null, model.getLengthPrice()),
+              ),
+              Container(
+                color: Colors.grey[500],
+                height: 1,
+                width: width,
+              ),
+            ],
+          ),
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildOptionItem(

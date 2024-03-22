@@ -19,10 +19,13 @@ class DeskCustomizationModel with ChangeNotifier {
     _updateSelectionAndPrice();
   }
 
-  final String _selectedLegType = '사리넨(정원형)'; // 예시 초기값
-
-  // 선택된 레그 타입을 외부에서 접근할 수 있도록 getter 제공
-  String get selectedLegType => _selectedLegType;
+  int getLengthPrice() {
+    if (_selectedLength == '선택안함') {
+      return 0; // 가로길이가 선택되지 않았으면 0을 반환
+    }
+    return _lengthPricesByType[_legType]?[_selectedLength] ??
+        0; // 가로길이에 해당하는 가격을 반환
+  }
 
   void _updateSelectionAndPrice() {
     // 현재 선택 상태를 이력에 추가
@@ -36,6 +39,7 @@ class DeskCustomizationModel with ChangeNotifier {
     _selectionHistory.add(currentSelection);
     calculateTotalPrice();
   }
+
   void setSelectedLength(String length) {
     if (_lengthPricesByType[_legType]?.containsKey(length) ?? false) {
       _selectedLength = length;
@@ -43,6 +47,7 @@ class DeskCustomizationModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
   List<String> getAvailableShippingRegions() {
     return shippingCosts.keys.toList();
   }
@@ -149,7 +154,6 @@ class DeskCustomizationModel with ChangeNotifier {
       _updateSelectionAndPrice();
     }
   }
-
 
   List<String> getAvailableLengths() {
     // 현재 선택된 레그 타입에 따라 길이 목록 반환
@@ -352,6 +356,153 @@ class DeskCustomizationModel with ChangeNotifier {
     },
     // Repeat for other leg types and colors
   };
+
+  final Map<String, Map<String, Map<String, String>>>
+      legTypeColorToPatternImages2 = {
+    '사리넨(정원형)': {
+      '화이트': {
+        'None':
+            'assets/images/leg1.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/ca1.png',
+        '르누아르': 'assets/images/ca2.png',
+        '클래식 스테추아리오': 'assets/images/ca3.png',
+        '엑스트라 스타투아리오': 'assets/images/ca4.png',
+        '칼라카타 오로': 'assets/images/ca5.png',
+        '칼라카타 글로리': 'assets/images/ca6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/legA2.png',
+        '칼라카타 마그니피코': 'assets/images/ca1-2.png',
+        '르누아르': 'assets/images/ca2-2.png',
+        '클래식 스테추아리오': 'assets/images/ca3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/ca4-2.png',
+        '칼라카타 오로': 'assets/images/ca5-2.png',
+        '칼라카타 글로리': 'assets/images/ca6-2.png',
+        // Add more patterns here
+      },
+    },
+    '사리넨(타원형)': {
+      '화이트': {
+        'None':
+            'assets/images/leg6.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/cb1.png',
+        '르누아르': 'assets/images/cb2.png',
+        '클래식 스테추아리오': 'assets/images/cb3.png',
+        '엑스트라 스타투아리오': 'assets/images/cb4.png',
+        '칼라카타 오로': 'assets/images/cb5.png',
+        '칼라카타 글로리': 'assets/images/cb6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/leg6-2.png',
+        '칼라카타 마그니피코': 'assets/images/cb1-2.png',
+        '르누아르': 'assets/images/cb2-2.png',
+        '클래식 스테추아리오': 'assets/images/cb3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/cb4-2.png',
+        '칼라카타 오로': 'assets/images/cb5-2.png',
+        '칼라카타 글로리': 'assets/images/cb6-2.png',
+        // Add more patterns here
+      },
+    },
+    '개트윅': {
+      '블랙': {
+        'None':
+            'assets/images/leg2.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/cc1.png',
+        '르누아르': 'assets/images/cc2.png',
+        '클래식 스테추아리오': 'assets/images/cc3.png',
+        '엑스트라 스타투아리오': 'assets/images/cc4.png',
+        '칼라카타 오로': 'assets/images/cc5.png',
+        '칼라카타 글로리': 'assets/images/cc6.png',
+        // Add more patterns here
+      },
+    },
+    '샹베리': {
+      '화이트': {
+        'None':
+            'assets/images/leg3.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/cd1.png',
+        '르누아르': 'assets/images/cd2.png',
+        '클래식 스테추아리오': 'assets/images/cd3.png',
+        '엑스트라 스타투아리오': 'assets/images/cd4.png',
+        '칼라카타 오로': 'assets/images/cd5.png',
+        '칼라카타 글로리': 'assets/images/cd6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/leg3-2.png',
+        '칼라카타 마그니피코': 'assets/images/cd1-2.png',
+        '르누아르': 'assets/images/cd2-2.png',
+        '클래식 스테추아리오': 'assets/images/cd3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/cd4-2.png',
+        '칼라카타 오로': 'assets/images/cd5-2.png',
+        '칼라카타 글로리': 'assets/images/cd6-2.png',
+        // Add more patterns here
+      },
+    },
+    '라고스': {
+      '브라운': {
+        'None':
+            'assets/images/leg4.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/ce1.png',
+        '르누아르': 'assets/images/ce2.png',
+        '클래식 스테추아리오': 'assets/images/ce3.png',
+        '엑스트라 스타투아리오': 'assets/images/ce4.png',
+        '칼라카타 오로': 'assets/images/ce5.png',
+        '칼라카타 글로리': 'assets/images/ce6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/leg4-2.png',
+        '칼라카타 마그니피코': 'assets/images/ce1-2.png',
+        '르누아르': 'assets/images/ce2-2.png',
+        '클래식 스테추아리오': 'assets/images/ce3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/tc4-2.png',
+        '칼라카타 오로': 'assets/images/ce5-2.png',
+        '칼라카타 글로리': 'assets/images/ce6-2.png',
+        // Add more patterns here
+      },
+    },
+    '디디모스': {
+      '화이트': {
+        'None':
+            'assets/images/leg5.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/cf1.png',
+        '르누아르': 'assets/images/cf2.png',
+        '클래식 스테추아리오': 'assets/images/cf3.png',
+        '엑스트라 스타투아리오': 'assets/images/cf4.png',
+        '칼라카타 오로': 'assets/images/cf5.png',
+        '칼라카타 글로리': 'assets/images/cf6.png',
+        // Add more patterns here
+      },
+      '블랙': {
+        'None': 'assets/images/leg5-2.png',
+        '칼라카타 마그니피코': 'assets/images/cf1-2.png',
+        '르누아르': 'assets/images/cf2-2.png',
+        '클래식 스테추아리오': 'assets/images/cf3-2.png',
+        '엑스트라 스타투아리오': 'assets/images/cf4-2.png',
+        '칼라카타 오로': 'assets/images/cf5-2.png',
+        '칼라카타 글로리': 'assets/images/cf6-2.png',
+        // Add more patterns here
+      },
+    },
+    '리프 다이닝': {
+      '화이트': {
+        'None':
+            'assets/images/leg7.png', // Default image when no pattern is selected
+        '칼라카타 마그니피코': 'assets/images/cg1.png',
+        '르누아르': 'assets/images/cg2.png',
+        '클래식 스테추아리오': 'assets/images/cg3.png',
+        '엑스트라 스타투아리오': 'assets/images/cg4.png',
+        '칼라카타 오로': 'assets/images/cg5.png',
+        '칼라카타 글로리': 'assets/images/cg6.png',
+        // Add more patterns here
+      },
+    },
+    // Repeat for other leg types and colors
+  };
+
   String get currentLegImage => _legTypeImages[_legType]!;
   String get selectedLength => _selectedLength;
   String get currentPatternImage {
@@ -458,6 +609,21 @@ class DeskCustomizationModel with ChangeNotifier {
       notifyListeners();
     }
   }
+  String get getCurrentPatternImage2 {
+    // 패턴이 선택되지 않았거나 기본값일 경우, 기본 이미지 경로 반환
+    if (_pattern == '선택안함' || _pattern == 'None') {
+      return _legTypeAndColorImages[_legType]?[_legColor] ?? 'assets/images/default.png';
+    }
+
+    // 패턴이 선택되었을 때, 해당하는 이미지 경로를 반환
+    // legTypeColorToPatternImages2 맵을 사용
+    return legTypeColorToPatternImages2[_legType]?[_legColor]?[_pattern] ?? 'assets/images/default.png';
+  }
+
+  // 패턴을 설정하는 메소드에서 패턴 변경 시 notifyListeners()를 호출하여
+  // 관찰자에게 상태 변경을 알리는 부분은 동일하게 유지됩니다.
+
+  // 나머지 클래스 구현...
 
   void resetToDefault() {
     // 기본 선택으로 리셋

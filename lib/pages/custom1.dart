@@ -310,13 +310,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -337,13 +330,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,
@@ -422,13 +408,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -449,13 +428,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,
@@ -630,13 +602,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -657,13 +622,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,
@@ -741,13 +699,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -768,13 +719,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,
@@ -857,13 +801,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -884,13 +821,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,
@@ -932,7 +862,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                 padding: EdgeInsets.only(top: 20.h),
                                 alignment: Alignment.centerLeft,
                                 width: width * 0.25,
-                                height: height * 0.17,
+                                height: height * 0.15,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -974,13 +904,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               CrossAxisAlignment.start,
                                           children: [
                                             AutoSizeText(
-                                              '원산지',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.grey[500]),
-                                            ),
-                                            AutoSizeText(
                                               '소재',
                                               maxFontSize: 14,
                                               style: TextStyle(
@@ -1001,13 +924,6 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            AutoSizeText(
-                                              '국내',
-                                              maxFontSize: 14,
-                                              style: TextStyle(
-                                                  fontSize: 12.sp,
-                                                  color: Colors.white),
-                                            ),
                                             AutoSizeText(
                                               'HPL 소재',
                                               maxFontSize: 14,

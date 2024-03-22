@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:byso/%08widget/alert.dart';
 import 'package:byso/%08widget/back.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/%08widget/option.dart';
@@ -206,7 +207,7 @@ class custom5 extends StatelessWidget {
                   height: height * 0.65,
                   width: width * 0.6,
                   child: Image.asset(
-                    model.currentPatternImage, // 이미지 경로를 적절히 변경하세요.
+                    model.getCurrentPatternImage2, // 이미지 경로를 적절히 변경하세요.
                     fit: BoxFit.contain,
                     scale: 4,
                   ),
@@ -377,20 +378,25 @@ class custom5 extends StatelessWidget {
                       SizedBox(
                         height: 30.h,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5)),
-                        width: width * 0.6,
-                        height: 50.h,
-                        alignment: Alignment.center,
-                        child: AutoSizeText(
-                          '견적서 보내기',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.bold),
-                          maxFontSize: 18,
+                      InkWell(
+                        onTap: () {
+                        myAlert(context);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5)),
+                          width: width * 0.6,
+                          height: 50.h,
+                          alignment: Alignment.center,
+                          child: AutoSizeText(
+                            '견적서 보내기',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold),
+                            maxFontSize: 18,
+                          ),
                         ),
                       )
                     ],
@@ -402,38 +408,47 @@ class custom5 extends StatelessWidget {
                 color: const Color(0xff101010),
                 height: height,
                 width: width * 0.28,
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
-                    child: Column(
-                      children: [
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: AutoSizeText(
-                            '최종 견적을 확인해주세요',
-                            maxFontSize: 20,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20.sp),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(children: [
+                          Container(
+                            padding: EdgeInsets.only(
+                                top: 40.h,
+                                right: 30.w,
+                                left: 30.w,
+                                bottom: 40.h),
+                            child: Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: AutoSizeText(
+                                    '최종 견적을 확인해주세요',
+                                    maxFontSize: 20,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20.sp),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Container(
+                                  color: Colors.grey[500],
+                                  width: width * 0.25,
+                                  height: 1,
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                const SummaryWidget()
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Container(
-                          color: Colors.grey[500],
-                          width: width * 0.25,
-                          height: 1,
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        const SummaryWidget()
-                      ],
+                        ]),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -470,8 +485,8 @@ class custom5 extends StatelessWidget {
                         ),
                       ],
                     ),
-                  ),
-                ])),
+                  ],
+                )),
           ]),
         ));
   }
