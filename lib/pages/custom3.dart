@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/back.dart';
+import 'package:byso/%08widget/launch.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/%08widget/patternpicker.dart';
 import 'package:byso/model/deskmodel.dart';
@@ -7,9 +8,12 @@ import 'package:byso/pages/custom1.dart';
 import 'package:byso/pages/custom2.dart';
 import 'package:byso/pages/custom4.dart';
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/marble.dart';
+import 'package:byso/pages/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class custom3 extends StatelessWidget {
   const custom3({super.key});
@@ -28,6 +32,7 @@ class custom3 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppBar(
+                  scrolledUnderElevation: 0,
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
@@ -51,25 +56,39 @@ class custom3 extends StatelessWidget {
                   actions: [
                     Row(
                       children: [
-                        AutoSizeText(
-                          'PRODUCT',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MarbleInfo()));
+                          },
+                          child: AutoSizeText(
+                            'MARBLE INFO',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
                           width: width * 0.03,
                         ),
-                        AutoSizeText(
-                          'MARVEL CUSTOM',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                    onTap: () {
+                      launch2('https://byso.kr/',
+                               );
+                          },
+                          child: AutoSizeText(
+                            'BYSO HOMEPAGE',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -298,11 +317,8 @@ class custom3 extends StatelessWidget {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const custom4()));
+                           Navigator.of(context)
+                                    .push(createRoute(const custom4()));
                                     },
                                     child: Container(
                                       alignment: Alignment.center,

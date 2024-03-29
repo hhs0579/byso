@@ -41,6 +41,8 @@ dependencies:
   firebase_core:
   lottie:
   intl:
+  url_launcher:
+  html:
 dev_dependencies:
   flutter_test:
     sdk: flutter

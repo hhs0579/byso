@@ -19,6 +19,11 @@ class LengthPickerWidget extends StatelessWidget {
     if (!isSarine) {
       return const SizedBox();
     }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (model.selectedLength == '선택안함' && availableLengths.isNotEmpty) {
+        model.setSelectedLength(availableLengths.first);
+      }
+    });
 
     // 사리넨일 경우 길이 선택기 UI를 렌더링
     return Column(

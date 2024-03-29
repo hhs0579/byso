@@ -34,6 +34,7 @@ class DeskCustomizationModel with ChangeNotifier {
       'legColor': _legColor,
       'pattern': _pattern,
       'shippingRegion': shippingRegion,
+      'selectedLength': _selectedLength,
       'price': currentPrice,
     };
     _selectionHistory.add(currentSelection);
@@ -59,13 +60,13 @@ class DeskCustomizationModel with ChangeNotifier {
   };
 
   final Map<String, int> _legTypePrices = {
-    '사리넨(정원형)': 170000,
-    '사리넨(타원형)': 170000,
-    '개트윅': 240000,
-    '샹베리': 400000,
-    '라고스': 400000,
-    '디디모스': 400000,
-    '리프 다이닝': 400000
+    '사리넨(정원형)': 700000,
+    '사리넨(타원형)': 900000,
+    '개트윅': 1100000,
+    '샹베리': 1100000,
+    '라고스': 1000000,
+    '디디모스': 900000,
+    '리프 다이닝': 900000
   };
   final Map<String, Map<String, int>> _legTypeAndColorPrices = {
     '사리넨(정원형)': {
@@ -600,6 +601,7 @@ class DeskCustomizationModel with ChangeNotifier {
         _legColor = previousSelection['legColor'];
         _pattern = previousSelection['pattern'];
         shippingRegion = previousSelection['shippingRegion'];
+        _selectedLength = previousSelection['selectedLength'] ?? '선택안함';
         // 이전 선택에 따른 가격을 다시 계산
         calculateTotalPrice();
       } else {
@@ -609,15 +611,18 @@ class DeskCustomizationModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
   String get getCurrentPatternImage2 {
     // 패턴이 선택되지 않았거나 기본값일 경우, 기본 이미지 경로 반환
     if (_pattern == '선택안함' || _pattern == 'None') {
-      return _legTypeAndColorImages[_legType]?[_legColor] ?? 'assets/images/default.png';
+      return _legTypeAndColorImages[_legType]?[_legColor] ??
+          'assets/images/default.png';
     }
 
     // 패턴이 선택되었을 때, 해당하는 이미지 경로를 반환
     // legTypeColorToPatternImages2 맵을 사용
-    return legTypeColorToPatternImages2[_legType]?[_legColor]?[_pattern] ?? 'assets/images/default.png';
+    return legTypeColorToPatternImages2[_legType]?[_legColor]?[_pattern] ??
+        'assets/images/default.png';
   }
 
   // 패턴을 설정하는 메소드에서 패턴 변경 시 notifyListeners()를 호출하여
@@ -631,6 +636,7 @@ class DeskCustomizationModel with ChangeNotifier {
     _legColor = '선택안함';
     _pattern = '선택안함';
     shippingRegion = '선택안함';
+    _selectedLength = '선택안함';
     // 기본 상태의 가격을 계산
     calculateTotalPrice();
   }

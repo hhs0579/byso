@@ -1,14 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/back.dart';
 import 'package:byso/%08widget/colorpicker.dart';
+import 'package:byso/%08widget/launch.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/custom1.dart';
 import 'package:byso/pages/custom3.dart';
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/marble.dart';
+import 'package:byso/pages/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class custom2 extends StatelessWidget {
   const custom2({super.key});
@@ -20,7 +24,7 @@ class custom2 extends StatelessWidget {
     final model = Provider.of<DeskCustomizationModel>(context);
 
     return Scaffold(
-  appBar: PreferredSize(
+        appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.h),
           child: Container(
             color: const Color(0xff171717),
@@ -28,6 +32,7 @@ class custom2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppBar(
+                  scrolledUnderElevation: 0,
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
@@ -51,25 +56,40 @@ class custom2 extends StatelessWidget {
                   actions: [
                     Row(
                       children: [
-                        AutoSizeText(
-                          'PRODUCT',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MarbleInfo()));
+                          },
+                          child: AutoSizeText(
+                            'MARBLE INFO',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
                           width: width * 0.03,
                         ),
-                        AutoSizeText(
-                          'MARVEL CUSTOM',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                          onTap: () {
+                            launch2(
+                              'https://byso.kr/',
+                            );
+                          },
+                          child: AutoSizeText(
+                            'BYSO HOMEPAGE',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -87,106 +107,100 @@ class custom2 extends StatelessWidget {
           height: height,
           width: width,
           child: Row(children: [
-                     Container(
-                color: const Color(0xff101010),
-                width: width * 0.12,
-                height: height,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 25.h,
+            Container(
+              color: const Color(0xff101010),
+              width: width * 0.12,
+              height: height,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const custom1()));
+                    },
+                    child: AutoSizeText(
+                      '테이블 레그 선택',
+                      maxFontSize: 18,
+                      style: TextStyle(
+                          color: const Color(0xff7D7D7D), fontSize: 14.sp),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const custom1()));
-                      },
-                      child: AutoSizeText(
-                        '테이블 레그 선택',
-                        maxFontSize: 18,
-                        style: TextStyle(color: Color(0xff7D7D7D), fontSize: 14.sp),
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[400],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[400],
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const custom2()));
+                    },
+                    child: AutoSizeText(
+                      '레그 컬러 선택',
+                      maxFontSize: 18,
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const custom2()));
-                      },
-                      child: AutoSizeText(
-                        '레그 컬러 선택',
-                        maxFontSize: 18,
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 14.sp),
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[400],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[400],
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: AutoSizeText(
+                      '상판 패턴 선택',
+                      maxFontSize: 18,
+                      style: TextStyle(
+                          color: const Color(0xff7D7D7D), fontSize: 14.sp),
                     ),
-                    InkWell(
-                      onTap: () {
-         
-                      },
-                      child: AutoSizeText(
-                        '상판 패턴 선택',
-                        maxFontSize: 18,
-                        style: TextStyle(
-                            color: const Color(0xff7D7D7D), fontSize: 14.sp),
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[400],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[400],
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: AutoSizeText(
+                      '부가정보 선택',
+                      maxFontSize: 18,
+                      style: TextStyle(
+                          color: const Color(0xff7D7D7D), fontSize: 14.sp),
                     ),
-                    InkWell(
-                      onTap: () {
-     
-                      },
-                      child: AutoSizeText(
-                        '부가정보 선택',
-                        maxFontSize: 18,
-                        style: TextStyle(
-                            color: const Color(0xff7D7D7D), fontSize: 14.sp),
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
+                    child: Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Colors.grey[400],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
-                      child: Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Colors.grey[400],
-                      ),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: AutoSizeText(
+                      '최종 견적 확인',
+                      maxFontSize: 18,
+                      style: TextStyle(
+                          color: const Color(0xff7D7D7D), fontSize: 14.sp),
                     ),
-                    InkWell(
-                      onTap: () {
-        
-                      },
-                      child: AutoSizeText(
-                        '최종 견적 확인',
-                        maxFontSize: 18,
-                        style: TextStyle(
-                            color: const Color(0xff7D7D7D), fontSize: 14.sp),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
+            ),
             Container(
               color: const Color(0xff171717),
               height: height,
@@ -257,7 +271,7 @@ class custom2 extends StatelessWidget {
                                     color: Colors.grey[400], fontSize: 16.sp),
                               ),
                               AutoSizeText(
-                            '${formatPriceWithCommas(model.currentPrice)}원',
+                                '${formatPriceWithCommas(model.currentPrice)}원',
                                 maxFontSize: 24,
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
@@ -295,11 +309,8 @@ class custom2 extends StatelessWidget {
                                   ),
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const custom3()));
+                                      Navigator.of(context)
+                                          .push(createRoute(const custom3()));
                                     },
                                     child: Container(
                                       alignment: Alignment.center,

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/back.dart';
+import 'package:byso/%08widget/launch.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/%08widget/shipping.dart';
 import 'package:byso/%08widget/table.dart';
@@ -9,9 +10,12 @@ import 'package:byso/pages/custom2.dart';
 import 'package:byso/pages/custom3.dart';
 import 'package:byso/pages/custom5.dart';
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/marble.dart';
+import 'package:byso/pages/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class custom4 extends StatelessWidget {
   const custom4({super.key});
@@ -22,7 +26,7 @@ class custom4 extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     final model = Provider.of<DeskCustomizationModel>(context);
     return Scaffold(
-        appBar: PreferredSize(
+        appBar:PreferredSize(
           preferredSize: Size.fromHeight(100.h),
           child: Container(
             color: const Color(0xff171717),
@@ -30,6 +34,7 @@ class custom4 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppBar(
+                  scrolledUnderElevation: 0,
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
@@ -53,25 +58,39 @@ class custom4 extends StatelessWidget {
                   actions: [
                     Row(
                       children: [
-                        AutoSizeText(
-                          'PRODUCT',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MarbleInfo()));
+                          },
+                          child: AutoSizeText(
+                            'MARBLE INFO',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
                           width: width * 0.03,
                         ),
-                        AutoSizeText(
-                          'MARVEL CUSTOM',
-                          maxFontSize: 20,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.w200,
+                        InkWell(
+                onTap: () {
+                      launch2('https://byso.kr/',
+                               );
+                          },
+                          child:  AutoSizeText(
+                            'BYSO HOMEPAGE',
+                            maxFontSize: 20,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -316,11 +335,8 @@ class custom4 extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const custom5()));
+                Navigator.of(context)
+                                    .push(createRoute(const custom5()));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,

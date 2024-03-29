@@ -48,14 +48,10 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-
                   // 크기 지정
-
                   width: 500,
                   height: 500,
-
                   // 내가 저장한 lottie 에셋 지정
-
                   child: Lottie.asset('assets/lotties/lottie.json',
                       controller: _controller, onLoaded: (composition) {
                     _controller.addStatusListener((status) {
@@ -68,11 +64,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
                       } else if (status == AnimationStatus.completed)
                         _controller.reverse();
                     });
-
                     // Configure the AnimationController with the duration of the
-
                     // Lottie file and start the animation.
-
                     _controller
                       ..duration = composition.duration
                       ..forward();

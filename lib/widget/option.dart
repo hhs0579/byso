@@ -1,5 +1,10 @@
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/model/deskmodel.dart';
+import 'package:byso/pages/custom1.dart';
+import 'package:byso/pages/custom2.dart';
+import 'package:byso/pages/custom3.dart';
+import 'package:byso/pages/custom4.dart';
+import 'package:byso/pages/route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +24,7 @@ class SummaryWidget extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildOptionItem('테이블 레그', model.legType,
-              model.currentLegImage, model.getLegTypePrice()),
+              model.currentLegImage, model.getLegTypePrice(), context),
         ),
         Container(
           color: Colors.grey[500],
@@ -29,7 +34,12 @@ class SummaryWidget extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildColorOptionItem(
-              '레그 컬러', model.legColor, _getColorFromName(model.legColor)),
+            '레그 컬러',
+            model.legColor,
+            _getColorFromName(model.legColor),
+            model.getLegColorPrice(),
+            context,
+          ),
         ),
         Container(
           color: Colors.grey[500],
@@ -39,7 +49,7 @@ class SummaryWidget extends StatelessWidget {
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildOptionItem('패턴', model.pattern,
-              model.getCurrentPatternImage(), model.getPatternPrice()),
+              model.getCurrentPatternImage(), model.getPatternPrice(), context),
         ),
         Container(
           color: Colors.grey[500],
@@ -51,8 +61,8 @@ class SummaryWidget extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.all(10.w),
-                child: _buildOptionItem(
-                    '가로길이', model.selectedLength, null, model.getLengthPrice()),
+                child: _buildOptionItem('가로길이', model.selectedLength, null,
+                    model.getLengthPrice(), context),
               ),
               Container(
                 color: Colors.grey[500],
@@ -63,8 +73,8 @@ class SummaryWidget extends StatelessWidget {
           ),
         Container(
           padding: EdgeInsets.all(10.w),
-          child: _buildOptionItem(
-              '배송비', model.shippingRegion, null, model.getShippingCost()),
+          child: _buildOptionItem('배송비', model.shippingRegion, null,
+              model.getShippingCost(), context),
         ),
         Container(
           color: Colors.grey[500],
@@ -75,33 +85,56 @@ class SummaryWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildOptionItem(
-      String title, String value, String? imagePath, int optionPrice) {
+  Widget _buildOptionItem(String title, String value, String? imagePath,
+      int optionPrice, BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: TextStyle(color: Colors.white, fontSize: 14.sp),
-              ),
-              Row(
-                children: [
-                  Text(
-                    '옵션변경',
-                    style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
-                  ),
-                  Image.asset(
-                    'assets/images/write.png',
-                    width: 16.w,
-                    height: 16.h,
-                  )
-                ],
-              ),
-            ],
+          InkWell(
+            onTap: () {
+              switch (title) {
+                case '테이블 레그':
+                  Navigator.of(context).push(createRoute(const custom1()));
+                  break;
+                case '레그 컬러':
+                  Navigator.of(context).push(createRoute(const custom2()));
+                  break;
+                case '패턴':
+                  Navigator.of(context).push(createRoute(const custom3()));
+                  break;
+                case '가로길이':
+                  Navigator.of(context).push(createRoute(const custom4()));
+                  break;
+                case '배송비':
+                  Navigator.of(context).push(createRoute(const custom4()));
+                  break;
+                // 다른 색상 옵션에 대한 처리를 추가할 수 있습니다.
+              }
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '옵션변경',
+                      style:
+                          TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+                    ),
+                    Image.asset(
+                      'assets/images/write.png',
+                      width: 16.w,
+                      height: 16.h,
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 12.h), // 추가
           Row(
@@ -137,32 +170,61 @@ class SummaryWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildColorOptionItem(String title, String value, Color color) {
+  Widget _buildColorOptionItem(
+    String title,
+    String value,
+    Color color,
+    int optionPrice,
+    BuildContext context,
+  ) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: TextStyle(color: Colors.white, fontSize: 14.sp),
-              ),
-              Row(
-                children: [
-                  Text(
-                    '옵션변경',
-                    style: TextStyle(color: Colors.grey[500], fontSize: 14.sp),
-                  ),
-                  Image.asset(
-                    'assets/images/write.png',
-                    width: 16.w,
-                    height: 16.h,
-                  )
-                ],
-              ),
-            ],
+          InkWell(
+            onTap: () {
+              switch (title) {
+                case '테이블 레그':
+                  Navigator.of(context).push(createRoute(const custom1()));
+                  break;
+                case '레그 컬러':
+                  Navigator.of(context).push(createRoute(const custom2()));
+                  break;
+                case '패턴':
+                  Navigator.of(context).push(createRoute(const custom3()));
+                  break;
+                case '가로길이':
+                  Navigator.of(context).push(createRoute(const custom4()));
+                  break;
+                case '배송비':
+                  Navigator.of(context).push(createRoute(const custom4()));
+                  break;
+                // 다른 색상 옵션에 대한 처리를 추가할 수 있습니다.
+              }
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '옵션변경',
+                      style:
+                          TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+                    ),
+                    Image.asset(
+                      'assets/images/write.png',
+                      width: 16.w,
+                      height: 16.h,
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 12.h), // 추
           Row(
