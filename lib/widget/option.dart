@@ -56,21 +56,20 @@ class SummaryWidget extends StatelessWidget {
           height: 1,
           width: width,
         ),
-        if (model.legType == '사리넨(정원형)' || model.legType == '사리넨(타원형)')
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.all(10.w),
-                child: _buildOptionItem('가로길이', model.selectedLength, null,
-                    model.getLengthPrice(), context),
-              ),
-              Container(
-                color: Colors.grey[500],
-                height: 1,
-                width: width,
-              ),
-            ],
-          ),
+        Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10.w),
+              child: _buildOptionItem('가로길이', model.selectedLength, null,
+                  model.getLengthPrice(), context),
+            ),
+            Container(
+              color: Colors.grey[500],
+              height: 1,
+              width: width,
+            ),
+          ],
+        ),
         Container(
           padding: EdgeInsets.all(10.w),
           child: _buildOptionItem('배송비', model.shippingRegion, null,
@@ -87,6 +86,8 @@ class SummaryWidget extends StatelessWidget {
 
   Widget _buildOptionItem(String title, String value, String? imagePath,
       int optionPrice, BuildContext context) {
+    final model = Provider.of<DeskCustomizationModel>(context, listen: false);
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Column(
@@ -95,19 +96,19 @@ class SummaryWidget extends StatelessWidget {
             onTap: () {
               switch (title) {
                 case '테이블 레그':
-                  Navigator.of(context).push(createRoute(const custom1()));
+                  model.revertAndResetSelections(context, 1);
                   break;
                 case '레그 컬러':
-                  Navigator.of(context).push(createRoute(const custom2()));
+                  model.revertAndResetSelections(context, 2);
                   break;
                 case '패턴':
-                  Navigator.of(context).push(createRoute(const custom3()));
+                  model.revertAndResetSelections(context, 3);
                   break;
                 case '가로길이':
-                  Navigator.of(context).push(createRoute(const custom4()));
+                  model.revertAndResetSelections(context, 4);
                   break;
                 case '배송비':
-                  Navigator.of(context).push(createRoute(const custom4()));
+                  model.revertAndResetSelections(context, 4);
                   break;
                 // 다른 색상 옵션에 대한 처리를 추가할 수 있습니다.
               }
@@ -158,7 +159,7 @@ class SummaryWidget extends StatelessWidget {
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Text(formatPriceWithCommas(optionPrice),
+              Text('+${formatPriceWithCommas(optionPrice)}',
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 14.sp,

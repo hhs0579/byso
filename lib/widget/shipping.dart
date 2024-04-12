@@ -13,13 +13,6 @@ class ShippingRegionPickerWidget extends StatelessWidget {
     final availableShippingRegions = model.getAvailableShippingRegions();
 
     // 자동으로 첫 번째 배송 옵션 선택 (조건에 따라)
-    if (model.shippingRegion == '선택안함' && availableShippingRegions.isNotEmpty) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (model.shippingRegion == '선택안함') {
-          model.setShippingRegion(availableShippingRegions.first);
-        }
-      });
-    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

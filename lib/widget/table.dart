@@ -13,17 +13,7 @@ class LengthPickerWidget extends StatelessWidget {
     final availableLengths = model.getAvailableLengths();
     final double width = MediaQuery.of(context).size.width;
 
-    bool isSarine = model.legType == '사리넨(정원형)' || model.legType == '사리넨(타원형)';
 
-    // 사리넨이 아닐 경우 아무것도 표시하지 않음
-    if (!isSarine) {
-      return const SizedBox();
-    }
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (model.selectedLength == '선택안함' && availableLengths.isNotEmpty) {
-        model.setSelectedLength(availableLengths.first);
-      }
-    });
 
     // 사리넨일 경우 길이 선택기 UI를 렌더링
     return Column(
@@ -73,7 +63,7 @@ class LengthPickerWidget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    model.getLengthPriceInfo(length),
+                    '+ ${model.getLengthPriceInfo(length)}',
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,

@@ -12,7 +12,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => DeskCustomizationModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,16 +29,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(1440, 1080),
-      builder: (context, _) => ChangeNotifierProvider(
-        create: (context) => DeskCustomizationModel(),
-        child: MaterialApp(
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-            useMaterial3: true,
-            fontFamily: 'Pretendard',
-          ),
-          home: const Splash(), // 클래스명은 대문자로 시작하는 것이 관례입니다.
+      builder: (context, _) => MaterialApp(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+          useMaterial3: true,
+          fontFamily: 'Pretendard',
         ),
+        home:
+            const Splash(), // The Splash page is the starting point of the app.
       ),
     );
   }

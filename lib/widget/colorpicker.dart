@@ -52,7 +52,7 @@ class ColorPickerWidget extends StatelessWidget {
                           : color == "브라운"
                               ? Colors.brown
                               : Colors.black,
-                  border: Border.all(color: Colors.black),
+                  border: Border.all(color: Colors.white),
                 ),
                 child: isSelected
                     ? const Icon(Icons.check, color: Colors.white)

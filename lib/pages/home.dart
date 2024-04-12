@@ -14,6 +14,9 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var screenWidth = MediaQuery.of(context).size.width;
+    const mobileWidthThreshold = 600;
+
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.h),

@@ -32,7 +32,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
       duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-    _animation = Tween<double>(begin: 0.7, end: 1.0).animate(_controller)
+    _animation = Tween<double>(begin: 0.9, end: 1.0).animate(_controller)
       ..addListener(() {
         setState(() {});
       });
@@ -990,11 +990,18 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                           style: TextStyle(
                               color: Colors.grey[400], fontSize: 16.sp),
                         ),
-                        AutoSizeText(
-                          '${formatPriceWithCommas(model.currentPrice)}원',
-                          maxFontSize: 24,
-                          style:
-                              TextStyle(fontSize: 22.sp, color: Colors.white),
+                        Consumer<DeskCustomizationModel>(
+                          builder: (context, model, child) {
+                            // 이 부분에서 model.currentPrice를 UI에 반영합니다.
+                            // 예를 들어, 가격을 표시하는 Text 위젯이 있다면 다음과 같이 작성할 수 있습니다.
+                            return AutoSizeText(
+                              '${formatPriceWithCommas(model.currentPrice)}원',
+                              maxFontSize: 24,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 22.sp, color: Colors.white),
+                            );
+                          },
                         ),
                         SizedBox(
                           height: 20.h,

@@ -31,7 +31,7 @@ class PatternPickerWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(bottom: 8.0),
           child: Text(
-            model.pattern != 'None' ? model.pattern : patterns.keys.first,
+            model.pattern != '선택안함' ? model.pattern : patterns.keys.first,
             style: TextStyle(
               fontSize: 20.sp,
               color: Colors.white,

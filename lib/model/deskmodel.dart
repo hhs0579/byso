@@ -1,4 +1,10 @@
 import 'package:byso/%08widget/number.dart';
+import 'package:byso/pages/custom1.dart';
+import 'package:byso/pages/custom2.dart';
+import 'package:byso/pages/custom3.dart';
+import 'package:byso/pages/custom4.dart';
+import 'package:byso/pages/custom5.dart';
+import 'package:byso/pages/route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,26 +25,9 @@ class DeskCustomizationModel with ChangeNotifier {
     _updateSelectionAndPrice();
   }
 
-  int getLengthPrice() {
-    if (_selectedLength == '선택안함') {
-      return 0; // 가로길이가 선택되지 않았으면 0을 반환
-    }
-    return _lengthPricesByType[_legType]?[_selectedLength] ??
-        0; // 가로길이에 해당하는 가격을 반환
-  }
-
   void _updateSelectionAndPrice() {
-    // 현재 선택 상태를 이력에 추가
-    Map<String, dynamic> currentSelection = {
-      'legType': _legType,
-      'legColor': _legColor,
-      'pattern': _pattern,
-      'shippingRegion': shippingRegion,
-      'selectedLength': _selectedLength,
-      'price': currentPrice,
-    };
-    _selectionHistory.add(currentSelection);
-    calculateTotalPrice();
+    calculateTotalPrice(); // 현재 선택에 따른 전체 가격을 다시 계산합니다.
+    notifyListeners(); // 상태 변화를 알립니다.
   }
 
   void setSelectedLength(String length) {
@@ -105,23 +94,114 @@ class DeskCustomizationModel with ChangeNotifier {
 
   final Map<String, Map<String, int>> _lengthPricesByType = {
     '사리넨(정원형)': {
-      '900mm': 900000,
-      '1000mm': 1000000,
-      '1100mm': 1100000,
-      '1200mm': 1200000,
-      '1300mm': 1300000,
-      '1400mm': 1400000,
-      '1500mm': 1500000,
+      '900mm': 816000,
+      '1000mm': 965000,
+      '1100mm': 1064000,
+      '1200mm': 1263000,
+      '1300mm': 1512000,
+      '1400mm': 1761000,
+      '1500mm': 2010000,
     },
     '사리넨(타원형)': {
-      '1600mm': 1000000,
-      '1700mm': 1100000,
-      '1800mm': 1200000,
-      '1900mm': 1300000,
-      '2000mm': 1400000,
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
     },
-    // 다른 레그 타입에 대한 설정도 추가 가능
+    '개트윅': {
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
+    },
+    '샹베리': {
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
+    },
+    '라고스': {
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
+    },
+    '디디모스': {
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
+    },
+    '리프 다이닝': {
+      '1600mm': 1370000,
+      '1700mm': 1470000,
+      '1800mm': 1570000,
+      '1900mm': 1670000,
+      '2000mm': 1770000,
+    },
   };
+  void calculateTotalPrice() {
+    int price = 0;
+
+    // 각 선택 항목에 대한 가격을 계산합니다.
+    price += getLegTypePrice();
+    price += getLegColorPrice();
+    price += getPatternPrice();
+    price += getShippingCost();
+    price += getLengthPrice(); // 추가: 선택된 길이에 따른 가격을 포함합니다.
+
+    currentPrice = price; // 최종 계산된 가격을 현재 가격으로 업데이트합니다.
+    notifyListeners(); // 상태 변화를 알립니다.
+  }
+
+  bool get isLengthSelected => selectedLength != '선택안함';
+  bool get isShippingSelected => shippingRegion != '선택안함';
+// 각 선택 항목에 대한 가격을 반환하는 메서드들을 정의합니다.
+  int getLegTypePrice() {
+    // 다리 유형이 '선택안함'이거나 설정되지 않았을 경우 0을 반환
+    if (_legType == '선택안함' || _legType.isEmpty) {
+      return 0;
+    }
+    return _legTypePrices[_legType] ?? 0;
+  }
+
+  int getLegColorPrice() {
+    // 다리 색상이 '선택안함'이거나 설정되지 않았을 경우 0을 반환
+    if (_legColor == '선택안함' || _legColor.isEmpty) {
+      return 0;
+    }
+    return _legTypeAndColorPrices[_legType]?[_legColor] ?? 0;
+  }
+
+  int getPatternPrice() {
+    // 패턴이 '선택안함'이거나 설정되지 않았을 경우 0을 반환
+    if (_pattern == '선택안함' || _pattern.isEmpty) {
+      return 0;
+    }
+    return patternPrices[_pattern] ?? 0;
+  }
+
+  int getShippingCost() {
+    // 배송 지역이 '선택안함'이거나 설정되지 않았을 경우 0을 반환
+    if (shippingRegion == '선택안함' || shippingRegion.isEmpty) {
+      return 0;
+    }
+    return shippingCosts[shippingRegion] ?? 0;
+  }
+
+  int getLengthPrice() {
+    // 선택된 길이가 없거나 '선택안함'과 같은 조건을 검사
+    if (_selectedLength.isEmpty || _selectedLength == '선택안함') {
+      return 0; // 길이가 선택되지 않았다면 0을 반환
+    } else {
+      return _lengthPricesByType[_legType]?[_selectedLength] ?? 0;
+    }
+  }
 
   List<String> getAvailableColors(String legType) {
     // _legTypeAndColorPrices 맵에서 주어진 레그 타입에 대한 색상 키들을 리스트로 반환
@@ -224,6 +304,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/te4.png',
         '칼라카타 오로': 'assets/images/te5.png',
         '칼라카타 글로리': 'assets/images/te6.png',
+        '비앙코': 'assets/images/te7.png',
+        '아라베스카토': 'assets/images/te8.png',
+        '스타투아리오': 'assets/images/te9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -234,6 +317,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/te4-2.png',
         '칼라카타 오로': 'assets/images/te5-2.png',
         '칼라카타 글로리': 'assets/images/te6-2.png',
+        '비앙코': 'assets/images/te7-2.png',
+        '아라베스카토': 'assets/images/te8-2.png',
+        '스타투아리오': 'assets/images/te9-2.png',
         // Add more patterns here
       },
     },
@@ -247,6 +333,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tp4.png',
         '칼라카타 오로': 'assets/images/tp5.png',
         '칼라카타 글로리': 'assets/images/tp6.png',
+        '비앙코': 'assets/images/tp7.png',
+        '아라베스카토': 'assets/images/tp8.png',
+        '스타투아리오': 'assets/images/tp9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -257,6 +346,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tp4-2.png',
         '칼라카타 오로': 'assets/images/tp5-2.png',
         '칼라카타 글로리': 'assets/images/tp6-2.png',
+        '비앙코': 'assets/images/tp7-2.png',
+        '아라베스카토': 'assets/images/tp8-2.png',
+        '스타투아리오': 'assets/images/tp9-2.png',
         // Add more patterns here
       },
     },
@@ -270,6 +362,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/ta4.png',
         '칼라카타 오로': 'assets/images/ta5.png',
         '칼라카타 글로리': 'assets/images/ta6.png',
+        '비앙코': 'assets/images/ta7.png',
+        '아라베스카토': 'assets/images/ta8.png',
+        '스타투아리오': 'assets/images/ta9.png',
         // Add more patterns here
       },
     },
@@ -283,6 +378,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tb4.png',
         '칼라카타 오로': 'assets/images/tb5.png',
         '칼라카타 글로리': 'assets/images/tb6.png',
+        '비앙코': 'assets/images/tb7.png',
+        '아라베스카토': 'assets/images/tb8.png',
+        '스타투아리오': 'assets/images/tb9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -293,6 +391,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tb4-2.png',
         '칼라카타 오로': 'assets/images/tb5-2.png',
         '칼라카타 글로리': 'assets/images/tb6-2.png',
+        '비앙코': 'assets/images/tb7-2.png',
+        '아라베스카토': 'assets/images/tb8-2.png',
+        '스타투아리오': 'assets/images/tb9-2.png',
         // Add more patterns here
       },
     },
@@ -306,6 +407,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tc4.png',
         '칼라카타 오로': 'assets/images/tc5.png',
         '칼라카타 글로리': 'assets/images/tc6.png',
+        '비앙코': 'assets/images/tc7.png',
+        '아라베스카토': 'assets/images/tc8.png',
+        '스타투아리오': 'assets/images/tc9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -316,6 +420,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tc4-2.png',
         '칼라카타 오로': 'assets/images/tc5-2.png',
         '칼라카타 글로리': 'assets/images/tc6-2.png',
+        '비앙코': 'assets/images/tc7-2.png',
+        '아라베스카토': 'assets/images/tc8-2.png',
+        '스타투아리오': 'assets/images/tc9-2.png',
         // Add more patterns here
       },
     },
@@ -329,6 +436,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/td4.png',
         '칼라카타 오로': 'assets/images/td5.png',
         '칼라카타 글로리': 'assets/images/td6.png',
+        '비앙코': 'assets/images/td7.png',
+        '아라베스카토': 'assets/images/td8.png',
+        '스타투아리오': 'assets/images/td9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -339,6 +449,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/td4-2.png',
         '칼라카타 오로': 'assets/images/td5-2.png',
         '칼라카타 글로리': 'assets/images/td6-2.png',
+        '비앙코': 'assets/images/td7-2.png',
+        '아라베스카토': 'assets/images/td8-2.png',
+        '스타투아리오': 'assets/images/td9-2.png',
         // Add more patterns here
       },
     },
@@ -352,6 +465,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tf4.png',
         '칼라카타 오로': 'assets/images/tf5.png',
         '칼라카타 글로리': 'assets/images/tf6.png',
+        '비앙코': 'assets/images/tf7.png',
+        '아라베스카토': 'assets/images/tf8.png',
+        '스타투아리오': 'assets/images/tf9.png',
         // Add more patterns here
       },
     },
@@ -370,6 +486,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/ca4.png',
         '칼라카타 오로': 'assets/images/ca5.png',
         '칼라카타 글로리': 'assets/images/ca6.png',
+        '비앙코': 'assets/images/ca7.png',
+        '아라베스카토': 'assets/images/ca8.png',
+        '스타투아리오': 'assets/images/ca9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -380,6 +499,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/ca4-2.png',
         '칼라카타 오로': 'assets/images/ca5-2.png',
         '칼라카타 글로리': 'assets/images/ca6-2.png',
+        '비앙코': 'assets/images/ca7-2.png',
+        '아라베스카토': 'assets/images/ca8-2.png',
+        '스타투아리오': 'assets/images/ca9-2.png',
         // Add more patterns here
       },
     },
@@ -393,6 +515,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cb4.png',
         '칼라카타 오로': 'assets/images/cb5.png',
         '칼라카타 글로리': 'assets/images/cb6.png',
+        '비앙코': 'assets/images/cb7.png',
+        '아라베스카토': 'assets/images/cb8.png',
+        '스타투아리오': 'assets/images/cb9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -403,6 +528,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cb4-2.png',
         '칼라카타 오로': 'assets/images/cb5-2.png',
         '칼라카타 글로리': 'assets/images/cb6-2.png',
+        '비앙코': 'assets/images/cb7-2.png',
+        '아라베스카토': 'assets/images/cb8-2.png',
+        '스타투아리오': 'assets/images/cb9-2.png',
         // Add more patterns here
       },
     },
@@ -416,6 +544,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cc4.png',
         '칼라카타 오로': 'assets/images/cc5.png',
         '칼라카타 글로리': 'assets/images/cc6.png',
+        '비앙코': 'assets/images/cc7.png',
+        '아라베스카토': 'assets/images/cc8.png',
+        '스타투아리오': 'assets/images/cc9.png',
         // Add more patterns here
       },
     },
@@ -429,6 +560,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cd4.png',
         '칼라카타 오로': 'assets/images/cd5.png',
         '칼라카타 글로리': 'assets/images/cd6.png',
+        '비앙코': 'assets/images/cd7.png',
+        '아라베스카토': 'assets/images/cd8.png',
+        '스타투아리오': 'assets/images/cd9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -439,6 +573,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cd4-2.png',
         '칼라카타 오로': 'assets/images/cd5-2.png',
         '칼라카타 글로리': 'assets/images/cd6-2.png',
+        '비앙코': 'assets/images/cd7-2.png',
+        '아라베스카토': 'assets/images/cd8-2.png',
+        '스타투아리오': 'assets/images/cd9-2.png',
         // Add more patterns here
       },
     },
@@ -452,6 +589,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/ce4.png',
         '칼라카타 오로': 'assets/images/ce5.png',
         '칼라카타 글로리': 'assets/images/ce6.png',
+        '비앙코': 'assets/images/ce7.png',
+        '아라베스카토': 'assets/images/ce8.png',
+        '스타투아리오': 'assets/images/ce9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -462,6 +602,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/tc4-2.png',
         '칼라카타 오로': 'assets/images/ce5-2.png',
         '칼라카타 글로리': 'assets/images/ce6-2.png',
+        '비앙코': 'assets/images/ce7-2.png',
+        '아라베스카토': 'assets/images/ce8-2.png',
+        '스타투아리오': 'assets/images/ce9-2.png',
         // Add more patterns here
       },
     },
@@ -475,6 +618,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cf4.png',
         '칼라카타 오로': 'assets/images/cf5.png',
         '칼라카타 글로리': 'assets/images/cf6.png',
+        '비앙코': 'assets/images/cf7.png',
+        '아라베스카토': 'assets/images/cf8.png',
+        '스타투아리오': 'assets/images/cf9.png',
         // Add more patterns here
       },
       '블랙': {
@@ -485,6 +631,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cf4-2.png',
         '칼라카타 오로': 'assets/images/cf5-2.png',
         '칼라카타 글로리': 'assets/images/cf6-2.png',
+        '비앙코': 'assets/images/cf7-2.png',
+        '아라베스카토': 'assets/images/cf8-2.png',
+        '스타투아리오': 'assets/images/cf9-2.png',
         // Add more patterns here
       },
     },
@@ -498,6 +647,9 @@ class DeskCustomizationModel with ChangeNotifier {
         '엑스트라 스타투아리오': 'assets/images/cg4.png',
         '칼라카타 오로': 'assets/images/cg5.png',
         '칼라카타 글로리': 'assets/images/cg6.png',
+        '비앙코': 'assets/images/cg7.png',
+        '아라베스카토': 'assets/images/cg8.png',
+        '스타투아리오': 'assets/images/cg9.png',
         // Add more patterns here
       },
     },
@@ -533,6 +685,9 @@ class DeskCustomizationModel with ChangeNotifier {
     '엑스트라 스타투아리오': 'assets/images/p4.png',
     '칼라카타 오로': 'assets/images/p5.png',
     '칼라카타 글로리': 'assets/images/p6.png',
+    '비앙코': 'assets/images/p7.png',
+    '아라베스카토': 'assets/images/p8.png',
+    '스타투아리오': 'assets/images/p9.png',
   };
 
   // 패턴 이미지 맵에 대한 getter 추가
@@ -549,31 +704,16 @@ class DeskCustomizationModel with ChangeNotifier {
 
   // 패턴 이름과 가격 매핑
   final Map<String, int> patternPrices = {
-    '칼라카타 마그니피코': 100000,
-    '르누아르': 100000,
-    '클래식 스테추아리오': 100000,
-    '엑스트라 스타투아리오': 100000,
-    '칼라카타 오로': 100000,
-    '칼라카타 글로리': 100000
+    '칼라카타 마그니피코': 0,
+    '르누아르': 0,
+    '클래식 스테추아리오': 0,
+    '엑스트라 스타투아리오': 0,
+    '칼라카타 오로': 0,
+    '칼라카타 글로리': 0,
+    '비앙코': 100000,
+    '아라베스카토': 300000,
+    '스타투아리오': 200000,
   };
-  int getLegTypePrice() {
-    return _legTypePrices[_legType] ?? 0;
-  }
-
-  // 레그 색상 가격을 반환합니다. (현재 예제에서는 추가 비용이 없음)
-  int getLegColorPrice() {
-    return _legTypeAndColorPrices[_legType]?[_legColor] ?? 0;
-  }
-
-  // 패턴 가격을 반환합니다.
-  int getPatternPrice() {
-    return patternPrices[_pattern] ?? 0;
-  }
-
-  // 배송비를 반환합니다.
-  int getShippingCost() {
-    return shippingCosts[shippingRegion] ?? 0;
-  }
 
   String getCurrentPatternImage() {
     return _patternImages[_pattern] ??
@@ -590,24 +730,85 @@ class DeskCustomizationModel with ChangeNotifier {
     calculateTotalPrice();
   }
 
+  void revertAndResetSelections(BuildContext context, int step) {
+    // 단계에 따른 조건을 설정하여, 선택한 단계 이후의 모든 선택을 초기화합니다.
+    switch (step) {
+      case 1:
+        _legColor = '';
+        _pattern = '';
+        shippingRegion = '';
+        _selectedLength = '';
+        notifyListeners();
+        break;
+      case 2:
+        _legColor = '';
+        _pattern = '';
+        shippingRegion = '';
+        _selectedLength = '';
+        notifyListeners();
+        break;
+      case 3:
+        _pattern = '';
+        shippingRegion = '';
+        _selectedLength = '';
+        notifyListeners();
+        break;
+      case 4:
+        shippingRegion = '';
+        _selectedLength = '';
+        notifyListeners();
+        break;
+      // 필요한 경우 더 많은 단계를 추가할 수 있습니다.
+    }
+    // 이 외의 경우에는, step이 5 이상인 경우, 모든 선택을 유지합니다.
+
+    calculateTotalPrice();
+    notifyListeners();
+    // 여기에 화면 전환 로직을 추가합니다.
+    Widget nextPage;
+    switch (step) {
+      case 1:
+        nextPage = const custom1(); // StepOnePage는 예제이며, 실제 구현 필요
+        break;
+      case 2:
+        nextPage = const custom2(); // StepTwoPage는 예제이며, 실제 구현 필요
+        break;
+      case 3:
+        nextPage = const custom3(); // StepThreePage는 예제이며, 실제 구현 필요
+        break;
+      case 4:
+        nextPage = const custom4(); // StepFourPage는 예제이며, 실제 구현 필요
+        break;
+      default:
+        nextPage = const custom5(); // HomePage는 사용자를 메인 페이지로 돌려보내는 예제
+    }
+
+    // Navigator를 사용하여 nextPage로 화면 전환
+    Navigator.of(context).pushReplacement(
+      createRoute(
+        nextPage,
+      ),
+    );
+  }
+
   void revertToPreviousSelection() {
     if (_selectionHistory.isNotEmpty) {
-      // 마지막 선택 이력 제거
+      // 현재 상태를 제거
       _selectionHistory.removeLast();
+      _selectionHistory.removeLast();
+      // 제거 후 _selectionHistory가 여전히 비어있지 않다면, 이전 상태로 복원
       if (_selectionHistory.isNotEmpty) {
-        // 이전 상태로 복원
         var previousSelection = _selectionHistory.last;
         _legType = previousSelection['legType'];
         _legColor = previousSelection['legColor'];
         _pattern = previousSelection['pattern'];
-        shippingRegion = previousSelection['shippingRegion'];
+        shippingRegion = previousSelection['shippingRegion'] ?? '선택안함';
         _selectedLength = previousSelection['selectedLength'] ?? '선택안함';
-        // 이전 선택에 따른 가격을 다시 계산
-        calculateTotalPrice();
       } else {
-        // 이력이 비었다면 초기 상태로 리셋
+        // _selectionHistory가 비어있다면, 모든 선택을 기본값으로 리셋
         resetToDefault();
       }
+      calculateTotalPrice();
       notifyListeners();
     }
   }
@@ -616,13 +817,13 @@ class DeskCustomizationModel with ChangeNotifier {
     // 패턴이 선택되지 않았거나 기본값일 경우, 기본 이미지 경로 반환
     if (_pattern == '선택안함' || _pattern == 'None') {
       return _legTypeAndColorImages[_legType]?[_legColor] ??
-          'assets/images/default.png';
+          'assets/images/leg1.png';
     }
 
     // 패턴이 선택되었을 때, 해당하는 이미지 경로를 반환
     // legTypeColorToPatternImages2 맵을 사용
     return legTypeColorToPatternImages2[_legType]?[_legColor]?[_pattern] ??
-        'assets/images/default.png';
+        'assets/images/leg1.png';
   }
 
   // 패턴을 설정하는 메소드에서 패턴 변경 시 notifyListeners()를 호출하여
@@ -639,16 +840,6 @@ class DeskCustomizationModel with ChangeNotifier {
     _selectedLength = '선택안함';
     // 기본 상태의 가격을 계산
     calculateTotalPrice();
-  }
-
-  void calculateTotalPrice() {
-    currentPrice = _legTypePrices[_legType] ?? 0;
-    currentPrice += _legTypeAndColorPrices[_legType]?[_legColor] ?? 0;
-    currentPrice += patternPrices[_pattern] ?? 0;
-    currentPrice += shippingCosts[shippingRegion] ?? 0;
-    final lengthPrice = _lengthPricesByType[_legType]?[_selectedLength];
-    currentPrice += lengthPrice ?? 0;
-    notifyListeners();
   }
 
   @override

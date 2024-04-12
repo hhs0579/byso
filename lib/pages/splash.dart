@@ -1,4 +1,5 @@
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/mobile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
@@ -25,7 +26,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
         const Duration(seconds: 2),
         () => Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (BuildContext context) => const home()),
+            MaterialPageRoute(
+                builder: (BuildContext context) => const device()),
             (route) => false));
   }
 
