@@ -357,7 +357,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -455,7 +455,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -552,7 +552,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -649,7 +649,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -746,7 +746,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -848,7 +848,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,
@@ -951,7 +951,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                                   color: Colors.white),
                                             ),
                                             AutoSizeText(
-                                              '플렌트란스',
+                                              '플랜트란스',
                                               maxFontSize: 14,
                                               style: TextStyle(
                                                   fontSize: 12.sp,

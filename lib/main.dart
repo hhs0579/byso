@@ -1,3 +1,4 @@
+import 'package:byso/%08widget/%08behavior.dart';
 import 'package:byso/firebase_options.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/home.dart';
@@ -12,7 +13,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(
     ChangeNotifierProvider(
       create: (context) => DeskCustomizationModel(),
@@ -23,21 +23,18 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(1440, 1080),
       builder: (context, _) => MaterialApp(
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-          useMaterial3: true,
-          fontFamily: 'Pretendard',
-        ),
-        home:
-            const Splash(), // The Splash page is the starting point of the app.
-      ),
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+            useMaterial3: true,
+            fontFamily: 'Pretendard',
+          ),
+          home: const Splash(),
+          scrollBehavior: MyCustomScrollBehavior()),
     );
   }
 }

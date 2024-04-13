@@ -3,6 +3,7 @@ import 'package:byso/%08widget/launch.dart';
 import 'package:byso/pages/custom1.dart';
 import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/route.dart';
+import 'package:byso/pages/route/customRoute1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -141,7 +142,8 @@ class home extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(createRoute(const custom1()));
+                      Navigator.of(context)
+                          .push(createRoute(const customRoute1()));
                     },
                     child: Container(
                       alignment: Alignment.center,
