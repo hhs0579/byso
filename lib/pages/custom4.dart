@@ -13,6 +13,9 @@ import 'package:byso/pages/custom5.dart';
 import 'package:byso/pages/home.dart';
 import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/route.dart';
+import 'package:byso/pages/route/customRoute5.dart';
+import 'package:byso/pages/route/homeRoute.dart';
+import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -40,10 +43,8 @@ class custom4 extends StatelessWidget {
                     backgroundColor: const Color(0xff171717),
                     title: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const home()));
+                         Navigator.of(context)
+                          .push(createRoute(const HomeRoute()));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(left: 10),
@@ -62,11 +63,8 @@ class custom4 extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MarbleInfo()));
+                                 Navigator.of(context)
+                          .push(createRoute(const mbyso()));
                             },
                             child: AutoSizeText(
                               'MARBLE INFO',
@@ -345,8 +343,8 @@ class custom4 extends StatelessWidget {
                                         // 모든 조건이 충족되면 다음 화면으로 이동
                                         shippingAlert(context);
                                       } else {
-                                        Navigator.of(context)
-                                            .push(createRoute(const custom5()));
+                                        Navigator.of(context).push(
+                                            createRoute(const customRoute5()));
                                       }
                                     },
                                     child: Container(

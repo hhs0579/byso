@@ -1,30 +1,32 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:byso/%08widget/%08mcolorpicker.dart';
-import 'package:byso/%08widget/colorpicker.dart';
+import 'package:byso/%08widget/alert.dart';
 import 'package:byso/%08widget/launch.dart';
+import 'package:byso/%08widget/mpattern.dart';
 import 'package:byso/%08widget/number.dart';
+import 'package:byso/%08widget/shipping.dart';
+import 'package:byso/%08widget/table.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/custom1.dart';
+import 'package:byso/pages/custom5.dart';
 import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/mobile/mhome.dart';
 import 'package:byso/pages/route.dart';
-import 'package:byso/pages/route/customRoute1.dart';
 import 'package:byso/pages/route/customRoute2.dart';
-import 'package:byso/pages/route/customRoute3.dart';
+import 'package:byso/pages/route/customRoute5.dart';
 import 'package:byso/pages/route/homeRoute.dart';
 import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class mcustom2 extends StatefulWidget {
-  const mcustom2({super.key});
+class mcustom4 extends StatefulWidget {
+  const mcustom4({super.key});
 
   @override
-  State<mcustom2> createState() => _mcustom2State();
+  State<mcustom4> createState() => _mcustom4State();
 }
 
-class _mcustom2State extends State<mcustom2> {
+class _mcustom4State extends State<mcustom4> {
   final ScrollController _controller = ScrollController();
   bool _isDrawerOpen = false;
   void toggleDrawer() {
@@ -58,7 +60,7 @@ class _mcustom2State extends State<mcustom2> {
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
-                      Navigator.of(context)
+                Navigator.of(context)
                           .push(createRoute(const HomeRoute()));
                     },
                     child: SizedBox(
@@ -131,8 +133,8 @@ class _mcustom2State extends State<mcustom2> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.of(context)
-                                            .push(createRoute(const mbyso()));
+                                              Navigator.of(context)
+                          .push(createRoute(const mbyso()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))
@@ -197,8 +199,7 @@ class _mcustom2State extends State<mcustom2> {
                                     '테이블 레그 선택',
                                     maxFontSize: 18,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D), fontSize: 14.sp),
                                   ),
                                 ),
                                 SizedBox(
@@ -224,7 +225,8 @@ class _mcustom2State extends State<mcustom2> {
                                     '레그 컬러 선택',
                                     maxFontSize: 18,
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 14.sp),
+                                        color: const Color(0xff7D7D7D),
+                                        fontSize: 14.sp),
                                   ),
                                 ),
                                 SizedBox(
@@ -243,7 +245,9 @@ class _mcustom2State extends State<mcustom2> {
                                   width: 30.w,
                                 ),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    model.revertAndResetSelections(context, 3);
+                                  },
                                   child: AutoSizeText(
                                     '상판 패턴 선택',
                                     maxFontSize: 18,
@@ -268,12 +272,14 @@ class _mcustom2State extends State<mcustom2> {
                                   width: 30.w,
                                 ),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    model.revertAndResetSelections(context, 4);
+                                  },
                                   child: AutoSizeText(
                                     '부가정보 선택',
                                     maxFontSize: 18,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
+                                        color: Colors.white,
                                         fontSize: 14.sp),
                                   ),
                                 ),
@@ -317,44 +323,46 @@ class _mcustom2State extends State<mcustom2> {
                         ),
                       ),
                       Container(
-                          color: const Color(0xff101010),
-                          width: width,
                           child: Column(children: [
-                            Container(
-                              padding: EdgeInsets.only(
-                                  top: 40.h,
-                                  right: 30.w,
-                                  left: 30.w,
-                                  bottom: 40.h),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: AutoSizeText(
-                                      '컬러를 선택해주세요',
-                                      maxFontSize: 30,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 25.sp),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 30.h,
-                                  ),
-                                  Container(
-                                    color: Colors.grey[500],
-                                    width: width,
-                                    height: 1,
-                                  ),
-                                  SizedBox(
-                                    height: 30.h,
-                                  ),
-                                  Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: const mcolorpicker()),
-                                ],
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
+                          child: Column(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: AutoSizeText(
+                                  '부가정보를 선택해주세요',
+                                  maxFontSize: 20,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18.sp),
+                                ),
                               ),
-                            )
-                          ])),
+                              const LengthPickerWidget(),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Container(
+                                color: Colors.grey[500],
+                                width: width,
+                                height: 1,
+                              ),
+                              SizedBox(
+                                height: 30.h,
+                              ),
+                              Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: AutoSizeText(
+                                    '배송비',
+                                    maxFontSize: 18,
+                                    style: TextStyle(
+                                        fontSize: 14.sp, color: Colors.white),
+                                  )),
+                              const ShippingRegionPickerWidget(),
+                            ],
+                          ),
+                        ),
+                      ])),
                     ],
                   ),
                 ),
@@ -400,7 +408,7 @@ class _mcustom2State extends State<mcustom2> {
                       children: [
                         InkWell(
                           onTap: () {
-                            model.revertAndResetSelections(context, 1);
+                            model.revertAndResetSelections(context, 3);
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -423,8 +431,17 @@ class _mcustom2State extends State<mcustom2> {
                         ),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context)
-                                .push(createRoute(const customRoute3()));
+                            // 첫 번째 조건: 모델에서 선택된 길이가 있는지 확인
+                            if (!model.isLengthSelected) {
+                              // 선택된 길이가 없으면 경고 창 표시
+                              mlengthAlert(context);
+                            } else if (!model.isShippingSelected) {
+                              // 모든 조건이 충족되면 다음 화면으로 이동
+                              mshippingAlert(context);
+                            } else {
+                              Navigator.of(context)
+                                  .push(createRoute(const customRoute5()));
+                            }
                           },
                           child: Container(
                             alignment: Alignment.center,

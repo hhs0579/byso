@@ -42,8 +42,8 @@ class mcolorpicker extends StatelessWidget {
                 model.setLegColor(color);
               },
               child: Container(
-                width: 180.w,
-                height: 100.h,
+                width: 140.w,
+                height: 80.h,
                 decoration: BoxDecoration(
                   color: isSelected
                       ? Colors.grey

@@ -1,30 +1,30 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/%08mcolorpicker.dart';
-import 'package:byso/%08widget/colorpicker.dart';
 import 'package:byso/%08widget/launch.dart';
+import 'package:byso/%08widget/mpattern.dart';
 import 'package:byso/%08widget/number.dart';
+import 'package:byso/%08widget/patternpicker.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:byso/pages/custom1.dart';
 import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/mobile/mhome.dart';
 import 'package:byso/pages/route.dart';
-import 'package:byso/pages/route/customRoute1.dart';
 import 'package:byso/pages/route/customRoute2.dart';
-import 'package:byso/pages/route/customRoute3.dart';
+import 'package:byso/pages/route/customRoute4.dart';
 import 'package:byso/pages/route/homeRoute.dart';
 import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class mcustom2 extends StatefulWidget {
-  const mcustom2({super.key});
+class mcustom3 extends StatefulWidget {
+  const mcustom3({super.key});
 
   @override
-  State<mcustom2> createState() => _mcustom2State();
+  State<mcustom3> createState() => _mcustom3State();
 }
 
-class _mcustom2State extends State<mcustom2> {
+class _mcustom3State extends State<mcustom3> {
   final ScrollController _controller = ScrollController();
   bool _isDrawerOpen = false;
   void toggleDrawer() {
@@ -58,11 +58,11 @@ class _mcustom2State extends State<mcustom2> {
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
-                      Navigator.of(context)
+                 Navigator.of(context)
                           .push(createRoute(const HomeRoute()));
                     },
                     child: SizedBox(
-                      width: width * 0.25,
+                      width: width * 0.2,
                       child: Image.asset(
                         'assets/images/logo.png',
                         scale: 3,
@@ -131,8 +131,8 @@ class _mcustom2State extends State<mcustom2> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.of(context)
-                                            .push(createRoute(const mbyso()));
+                                            Navigator.of(context)
+                          .push(createRoute(const mbyso()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))
@@ -191,10 +191,36 @@ class _mcustom2State extends State<mcustom2> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    model.revertAndResetSelections(context, 1);
+                model.revertAndResetSelections(
+                                          context, 1);
                                   },
                                   child: AutoSizeText(
                                     '테이블 레그 선택',
+                                    maxFontSize: 18,
+                                    style: TextStyle(
+                                        color: Color(0xff7D7D7D), fontSize: 14.sp),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: 10.h, bottom: 10.h),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Colors.grey[400],
+                                    size: 30.w,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                ),
+                                InkWell(
+                                  onTap: () {                model.revertAndResetSelections(
+                                          context, 2);},
+                                  child: AutoSizeText(
+                                    '레그 컬러 선택',
                                     maxFontSize: 18,
                                     style: TextStyle(
                                         color: const Color(0xff7D7D7D),
@@ -217,38 +243,13 @@ class _mcustom2State extends State<mcustom2> {
                                   width: 30.w,
                                 ),
                                 InkWell(
-                                  onTap: () {
-                                    model.revertAndResetSelections(context, 2);
-                                  },
-                                  child: AutoSizeText(
-                                    '레그 컬러 선택',
-                                    maxFontSize: 18,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 14.sp),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 10.h, bottom: 10.h),
-                                  child: Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.grey[400],
-                                    size: 30.w,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                ),
-                                InkWell(
-                                  onTap: () {},
+                                  onTap: () {                model.revertAndResetSelections(
+                                          context, 3);},
                                   child: AutoSizeText(
                                     '상판 패턴 선택',
                                     maxFontSize: 18,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
+                                        color: Colors.white,
                                         fontSize: 14.sp),
                                   ),
                                 ),
@@ -317,44 +318,35 @@ class _mcustom2State extends State<mcustom2> {
                         ),
                       ),
                       Container(
-                          color: const Color(0xff101010),
-                          width: width,
-                          child: Column(children: [
+                        padding: EdgeInsets.only(left: 30.w, right: 30.w),
+                        child: Column(
+                          children: [
                             Container(
-                              padding: EdgeInsets.only(
-                                  top: 40.h,
-                                  right: 30.w,
-                                  left: 30.w,
-                                  bottom: 40.h),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: AutoSizeText(
-                                      '컬러를 선택해주세요',
-                                      maxFontSize: 30,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 25.sp),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 30.h,
-                                  ),
-                                  Container(
-                                    color: Colors.grey[500],
-                                    width: width,
-                                    height: 1,
-                                  ),
-                                  SizedBox(
-                                    height: 30.h,
-                                  ),
-                                  Container(
-                                      alignment: Alignment.centerLeft,
-                                      child: const mcolorpicker()),
-                                ],
+                              alignment: Alignment.centerLeft,
+                              child: AutoSizeText(
+                                '상판 패턴을 선택해주세요',
+                                maxFontSize: 20,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20.sp),
                               ),
-                            )
-                          ])),
+                            ),
+                            SizedBox(
+                              height: 30.h,
+                            ),
+                            Container(
+                              color: Colors.grey[500],
+                              width: width,
+                              height: 1,
+                            ),
+                            SizedBox(
+                              height: 30.h,
+                            ),
+                            Container(
+                                alignment: Alignment.centerLeft,
+                                child: const mpatternPicker()),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -400,7 +392,8 @@ class _mcustom2State extends State<mcustom2> {
                       children: [
                         InkWell(
                           onTap: () {
-                            model.revertAndResetSelections(context, 1);
+                            model.revertAndResetSelections(
+                                          context, 2);
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -424,7 +417,7 @@ class _mcustom2State extends State<mcustom2> {
                         InkWell(
                           onTap: () {
                             Navigator.of(context)
-                                .push(createRoute(const customRoute3()));
+                                .push(createRoute(const customRoute4()));
                           },
                           child: Container(
                             alignment: Alignment.center,

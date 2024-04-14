@@ -8,6 +8,8 @@ import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/mobile/mhome.dart';
 import 'package:byso/pages/route.dart';
 import 'package:byso/pages/route/customRoute2.dart';
+import 'package:byso/pages/route/homeRoute.dart';
+import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -53,13 +55,11 @@ class _mcustom1State extends State<mcustom1> {
                   backgroundColor: const Color(0xff171717),
                   title: InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const mhome()));
+                      Navigator.of(context)
+                          .push(createRoute(const HomeRoute()));
                     },
                     child: SizedBox(
-                      width: width * 0.2,
+                      width: width * 0.25,
                       child: Image.asset(
                         'assets/images/logo.png',
                         scale: 3,
@@ -110,11 +110,8 @@ class _mcustom1State extends State<mcustom1> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const MarbleInfo()));
+                    Navigator.of(context)
+                          .push(createRoute(const mbyso()));
                                     },
                                     child: AutoSizeText(
                                       'MARBLE INFO',

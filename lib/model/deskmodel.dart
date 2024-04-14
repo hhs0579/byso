@@ -5,6 +5,11 @@ import 'package:byso/pages/custom3.dart';
 import 'package:byso/pages/custom4.dart';
 import 'package:byso/pages/custom5.dart';
 import 'package:byso/pages/route.dart';
+import 'package:byso/pages/route/customRoute1.dart';
+import 'package:byso/pages/route/customRoute2.dart';
+import 'package:byso/pages/route/customRoute3.dart';
+import 'package:byso/pages/route/customRoute4.dart';
+import 'package:byso/pages/route/customRoute5.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -768,19 +773,19 @@ class DeskCustomizationModel with ChangeNotifier {
     Widget nextPage;
     switch (step) {
       case 1:
-        nextPage = const custom1(); // StepOnePage는 예제이며, 실제 구현 필요
+        nextPage = customRoute1(); // StepOnePage는 예제이며, 실제 구현 필요
         break;
       case 2:
-        nextPage = const custom2(); // StepTwoPage는 예제이며, 실제 구현 필요
+        nextPage = customRoute2(); // StepTwoPage는 예제이며, 실제 구현 필요
         break;
       case 3:
-        nextPage = const custom3(); // StepThreePage는 예제이며, 실제 구현 필요
+        nextPage =customRoute3(); // StepThreePage는 예제이며, 실제 구현 필요
         break;
       case 4:
-        nextPage = const custom4(); // StepFourPage는 예제이며, 실제 구현 필요
+        nextPage = customRoute4(); // StepFourPage는 예제이며, 실제 구현 필요
         break;
       default:
-        nextPage = const custom5(); // HomePage는 사용자를 메인 페이지로 돌려보내는 예제
+        nextPage = customRoute5(); // HomePage는 사용자를 메인 페이지로 돌려보내는 예제
     }
 
     // Navigator를 사용하여 nextPage로 화면 전환

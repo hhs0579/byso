@@ -13,14 +13,12 @@ class LengthPickerWidget extends StatelessWidget {
     final availableLengths = model.getAvailableLengths();
     final double width = MediaQuery.of(context).size.width;
 
-
-
     // 사리넨일 경우 길이 선택기 UI를 렌더링
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 30.h),
-        Container(color: Colors.grey[500], width: width * 0.25, height: 1),
+        Container(color: Colors.grey[500], width: width, height: 1),
         SizedBox(height: 30.h),
         Container(
           alignment: Alignment.centerLeft,
@@ -57,15 +55,17 @@ class LengthPickerWidget extends StatelessWidget {
                             : Container(),
                       ),
                       const SizedBox(width: 8),
-                      Text(length,
+                      AutoSizeText(length,
+                          maxFontSize: 24,
                           style:
-                              TextStyle(fontSize: 16.sp, color: Colors.white)),
+                              TextStyle(fontSize: 20.sp, color: Colors.white)),
                     ],
                   ),
-                  Text(
+                  AutoSizeText(
                     '+ ${model.getLengthPriceInfo(length)}',
+                    maxFontSize: 24,
                     style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),

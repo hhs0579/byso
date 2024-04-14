@@ -1,9 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/model/deskmodel.dart';
-import 'package:byso/pages/custom1.dart';
-import 'package:byso/pages/custom2.dart';
-import 'package:byso/pages/custom3.dart';
-import 'package:byso/pages/custom4.dart';
 import 'package:byso/pages/route.dart';
 import 'package:byso/pages/route/customRoute1.dart';
 import 'package:byso/pages/route/customRoute2.dart';
@@ -13,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-class SummaryWidget extends StatelessWidget {
-  const SummaryWidget({Key? key}) : super(key: key);
+class moption extends StatelessWidget {
+  const moption({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +79,7 @@ class SummaryWidget extends StatelessWidget {
         Container(
           color: Colors.grey[500],
           height: 1,
-          width: width * 0.2,
+          width: width,
         ),
       ],
     );
@@ -120,21 +117,23 @@ class SummaryWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                AutoSizeText(
                   title,
-                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                  maxFontSize: 30,
+                  style: TextStyle(color: Colors.white, fontSize: 24.sp),
                 ),
                 Row(
                   children: [
-                    Text(
+                    AutoSizeText(
                       '옵션변경',
+                      maxFontSize: 30,
                       style:
-                          TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+                          TextStyle(color: Colors.grey[500], fontSize: 24.sp),
                     ),
                     Image.asset(
                       'assets/images/write.png',
-                      width: 16.w,
-                      height: 16.h,
+                      width: 30.w,
+                      height: 30.h,
                     )
                   ],
                 ),
@@ -150,23 +149,27 @@ class SummaryWidget extends StatelessWidget {
                   if (imagePath != null)
                     Image.asset(
                       imagePath,
-                      width: 40.w,
-                      height: 50.h,
+                      width: 120.w,
+                      height: 60.h,
+                      fit: BoxFit.cover,
+                      scale: 2,
                     ),
                   SizedBox(
                     width: 10.w,
                   ),
-                  Text(value,
+                  AutoSizeText(value,
+                      maxFontSize: 30,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14.sp,
+                          fontSize: 24.sp,
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              Text('+${formatPriceWithCommas(optionPrice)}',
+              AutoSizeText('+${formatPriceWithCommas(optionPrice)}',
+                  maxFontSize: 30,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14.sp,
+                      fontSize: 30.sp,
                       fontWeight: FontWeight.bold)),
             ],
           )
@@ -210,21 +213,23 @@ class SummaryWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                AutoSizeText(
                   title,
-                  style: TextStyle(color: Colors.white, fontSize: 14.sp),
+                  maxFontSize: 30,
+                  style: TextStyle(color: Colors.white, fontSize: 24.sp),
                 ),
                 Row(
                   children: [
-                    Text(
+                    AutoSizeText(
                       '옵션변경',
+                      maxFontSize: 30,
                       style:
-                          TextStyle(color: Colors.grey[500], fontSize: 14.sp),
+                          TextStyle(color: Colors.grey[500], fontSize: 24.sp),
                     ),
                     Image.asset(
                       'assets/images/write.png',
-                      width: 16.w,
-                      height: 16.h,
+                      width: 30.w,
+                      height: 30.h,
                     )
                   ],
                 ),
@@ -235,8 +240,8 @@ class SummaryWidget extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 35.w,
-                height: 50.h,
+                width: 120.w,
+                height: 60.h,
                 decoration: BoxDecoration(
                   color: color,
                   border: Border.all(color: Colors.white),
@@ -245,11 +250,12 @@ class SummaryWidget extends StatelessWidget {
               SizedBox(
                 width: 10.w,
               ),
-              Text(
+              AutoSizeText(
                 value,
+                maxFontSize: 30,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14.sp,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.bold),
               ),
             ],

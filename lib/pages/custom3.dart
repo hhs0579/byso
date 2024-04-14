@@ -10,6 +10,9 @@ import 'package:byso/pages/custom4.dart';
 import 'package:byso/pages/home.dart';
 import 'package:byso/pages/marble.dart';
 import 'package:byso/pages/route.dart';
+import 'package:byso/pages/route/customRoute4.dart';
+import 'package:byso/pages/route/homeRoute.dart';
+import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -37,10 +40,8 @@ class custom3 extends StatelessWidget {
                     backgroundColor: const Color(0xff171717),
                     title: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const home()));
+                         Navigator.of(context)
+                          .push(createRoute(const HomeRoute()));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(left: 10),
@@ -59,11 +60,8 @@ class custom3 extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MarbleInfo()));
+                    Navigator.of(context)
+                          .push(createRoute(const mbyso()));
                             },
                             child: AutoSizeText(
                               'MARBLE INFO',
@@ -322,7 +320,7 @@ class custom3 extends StatelessWidget {
                                     InkWell(
                                       onTap: () {
                                         Navigator.of(context)
-                                            .push(createRoute(const custom4()));
+                                            .push(createRoute(customRoute4()));
                                       },
                                       child: Container(
                                         alignment: Alignment.center,

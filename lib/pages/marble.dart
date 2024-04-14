@@ -1,6 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/launch.dart';
 import 'package:byso/pages/home.dart';
+import 'package:byso/pages/route.dart';
+import 'package:byso/pages/route/homeRoute.dart';
+import 'package:byso/pages/route/mbyso.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,8 +29,7 @@ class MarbleInfo extends StatelessWidget {
                 backgroundColor: const Color(0xff171717),
                 title: InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const home()));
+                    Navigator.of(context).push(createRoute(const HomeRoute()));
                   },
                   child: Container(
                     margin: const EdgeInsets.only(left: 10),

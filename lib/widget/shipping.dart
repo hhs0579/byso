@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:byso/%08widget/number.dart';
 import 'package:byso/model/deskmodel.dart';
 import 'package:flutter/material.dart';
@@ -45,15 +46,17 @@ class ShippingRegionPickerWidget extends StatelessWidget {
                               : Container(),
                         ),
                         const SizedBox(width: 8),
-                        Text(region,
+                        AutoSizeText(region,
+                            maxFontSize: 24,
                             style: TextStyle(
-                                fontSize: 16.sp, color: Colors.white)),
+                                fontSize: 20.sp, color: Colors.white)),
                       ],
                     ),
-                    Text(
+                    AutoSizeText(
                       '+${formatPriceWithCommas(model.shippingCosts[region] ?? 0)}원',
+                      maxFontSize: 24,
                       style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
