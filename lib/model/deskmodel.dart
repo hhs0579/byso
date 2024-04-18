@@ -663,6 +663,7 @@ class DeskCustomizationModel with ChangeNotifier {
 
   String get currentLegImage => _legTypeImages[_legType]!;
   String get selectedLength => _selectedLength;
+
   String get currentPatternImage {
     // 레그 타입과 레그 컬러에 해당하는 패턴 이미지 맵을 찾습니다.
     final colorPatterns = legTypeColorToPatternImages[_legType]?[_legColor];
@@ -677,6 +678,13 @@ class DeskCustomizationModel with ChangeNotifier {
       return _legTypeAndColorImages[_legType]?[_legColor] ??
           'assets/images/leg1.png';
     }
+  }
+
+  String get currentPatternImage2 {
+    // Directly return the default image based on the leg type and leg color.
+    // This ignores any specific pattern and provides a simpler method.
+    return _legTypeAndColorImages[_legType]?[_legColor] ??
+        'assets/images/leg1.png';
   }
 
   List<String> getAvailablePatterns() {
@@ -739,31 +747,27 @@ class DeskCustomizationModel with ChangeNotifier {
     // 단계에 따른 조건을 설정하여, 선택한 단계 이후의 모든 선택을 초기화합니다.
     switch (step) {
       case 1:
-        _legColor = '';
-        _pattern = '';
-        shippingRegion = '';
-        _selectedLength = '';
-        notifyListeners();
+        _legColor = '선택안함';
+        _pattern = '선택안함';
+        shippingRegion = '선택안함';
+        _selectedLength = '선택안함';
         break;
       case 2:
-        _legColor = '';
-        _pattern = '';
-        shippingRegion = '';
-        _selectedLength = '';
-        notifyListeners();
+        _legColor = '선택안함';
+        _pattern = '선택안함';
+        shippingRegion = '선택안함';
+        _selectedLength = '선택안함';
         break;
       case 3:
-        _pattern = '';
-        shippingRegion = '';
-        _selectedLength = '';
-        notifyListeners();
+        _pattern = '선택안함';
+        shippingRegion = '선택안함';
+        _selectedLength = '선택안함';
         break;
       case 4:
-        shippingRegion = '';
-        _selectedLength = '';
-        notifyListeners();
+        shippingRegion = '선택안함';
+        _selectedLength = '선택안함';
         break;
-      // 필요한 경우 더 많은 단계를 추가할 수 있습니다.
+      // 이하 생략
     }
     // 이 외의 경우에는, step이 5 이상인 경우, 모든 선택을 유지합니다.
 
@@ -773,19 +777,19 @@ class DeskCustomizationModel with ChangeNotifier {
     Widget nextPage;
     switch (step) {
       case 1:
-        nextPage = customRoute1(); // StepOnePage는 예제이며, 실제 구현 필요
+        nextPage = const customRoute1(); // StepOnePage는 예제이며, 실제 구현 필요
         break;
       case 2:
-        nextPage = customRoute2(); // StepTwoPage는 예제이며, 실제 구현 필요
+        nextPage = const customRoute2(); // StepTwoPage는 예제이며, 실제 구현 필요
         break;
       case 3:
-        nextPage =customRoute3(); // StepThreePage는 예제이며, 실제 구현 필요
+        nextPage = const customRoute3(); // StepThreePage는 예제이며, 실제 구현 필요
         break;
       case 4:
-        nextPage = customRoute4(); // StepFourPage는 예제이며, 실제 구현 필요
+        nextPage = const customRoute4(); // StepFourPage는 예제이며, 실제 구현 필요
         break;
       default:
-        nextPage = customRoute5(); // HomePage는 사용자를 메인 페이지로 돌려보내는 예제
+        nextPage = const customRoute5(); // HomePage는 사용자를 메인 페이지로 돌려보내는 예제
     }
 
     // Navigator를 사용하여 nextPage로 화면 전환
@@ -820,10 +824,6 @@ class DeskCustomizationModel with ChangeNotifier {
 
   String get getCurrentPatternImage2 {
     // 패턴이 선택되지 않았거나 기본값일 경우, 기본 이미지 경로 반환
-    if (_pattern == '선택안함' || _pattern == 'None') {
-      return _legTypeAndColorImages[_legType]?[_legColor] ??
-          'assets/images/leg1.png';
-    }
 
     // 패턴이 선택되었을 때, 해당하는 이미지 경로를 반환
     // legTypeColorToPatternImages2 맵을 사용

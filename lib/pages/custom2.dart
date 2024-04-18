@@ -40,8 +40,8 @@ class custom2 extends StatelessWidget {
                     backgroundColor: const Color(0xff171717),
                     title: InkWell(
                       onTap: () {
-                              Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
+                        Navigator.of(context)
+                            .push(createRoute(const HomeRoute()));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(left: 10),
@@ -60,8 +60,8 @@ class custom2 extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                     Navigator.of(context)
-                          .push(createRoute(const mbyso()));
+                              Navigator.of(context)
+                                  .push(createRoute(const mbyso()));
                             },
                             child: AutoSizeText(
                               'MARBLE INFO',
@@ -200,7 +200,7 @@ class custom2 extends StatelessWidget {
                 height: height,
                 width: width * 0.6,
                 child: Image.asset(
-                  model.currentPatternImage, // 이미지 경로를 적절히 변경하세요.
+                  model.currentPatternImage2, // 이미지 경로를 적절히 변경하세요.
                   fit: BoxFit.contain,
                   scale: 4,
                 ),
@@ -313,8 +313,8 @@ class custom2 extends StatelessWidget {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        Navigator.of(context)
-                                            .push(createRoute(const customRoute3()));
+                                        Navigator.of(context).push(
+                                            createRoute(const customRoute3()));
                                       },
                                       child: Container(
                                         alignment: Alignment.center,

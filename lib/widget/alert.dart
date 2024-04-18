@@ -94,17 +94,17 @@ void mmyAlert(BuildContext context) {
                 borderRadius: BorderRadius.circular(10.sp),
                 color: Colors.white,
               ),
-              height: height * 0.2,
-              width: width * 0.35,
+              height: height * 0.3,
+              width: width * 0.6,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  AutoSizeText(
+                  const AutoSizeText(
                     '견적을 신청했습니다.',
                     maxFontSize: 40,
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 30.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Pretendard'),
                   ),
@@ -113,31 +113,30 @@ void mmyAlert(BuildContext context) {
                       AutoSizeText(
                         '전달 주신 견적서는 잘 전달받았습니다.',
                         maxFontSize: 30,
-                        style:
-                            TextStyle(color: Colors.grey[500], fontSize: 24.sp),
+                        style: TextStyle(color: Colors.grey[500], fontSize: 16),
                       ),
                       AutoSizeText('입력해주신 정보를 바탕으로 신청일',
                           maxFontSize: 30,
-                          style: TextStyle(
-                              color: Colors.grey[500], fontSize: 24.sp)),
+                          style:
+                              TextStyle(color: Colors.grey[500], fontSize: 16)),
                       AutoSizeText('1주일 내에 연락드리겠습니다',
                           maxFontSize: 30,
-                          style: TextStyle(
-                              color: Colors.grey[500], fontSize: 24.sp)),
+                          style:
+                              TextStyle(color: Colors.grey[500], fontSize: 16)),
                     ],
                   ),
                   Container(
-                    height: height * 0.04,
-                    width: width * 0.2,
+                    height: height * 0.045,
+                    width: width * 0.3,
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xff171717)),
                       borderRadius: BorderRadius.circular(10.sp),
                     ),
                     alignment: Alignment.center,
-                    child: Text(
+                    child: const Text(
                       '확인',
                       style: TextStyle(
-                          fontSize: 30.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),
@@ -233,16 +232,16 @@ void mlengthAlert(BuildContext context) {
             child: Container(
               color: Colors.white,
               height: height * 0.2,
-              width: width * 0.25,
+              width: width * 0.6,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  AutoSizeText(
+                  const AutoSizeText(
                     '가로길이를 선택해주세요.',
                     maxFontSize: 24,
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Pretendard'),
                   ),
@@ -254,11 +253,11 @@ void mlengthAlert(BuildContext context) {
                       borderRadius: BorderRadius.circular(10.sp),
                     ),
                     alignment: Alignment.center,
-                    child: AutoSizeText(
+                    child: const AutoSizeText(
                       '확인',
                       maxFontSize: 24,
                       style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),
@@ -353,16 +352,16 @@ void mshippingAlert(BuildContext context) {
             child: Container(
               color: Colors.white,
               height: height * 0.2,
-              width: width * 0.25,
+              width: width * 0.6,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  AutoSizeText(
+                  const AutoSizeText(
                     '배송비를 선택해주세요.',
                     maxFontSize: 24,
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20.sp,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Pretendard'),
                   ),
@@ -374,11 +373,11 @@ void mshippingAlert(BuildContext context) {
                       borderRadius: BorderRadius.circular(10.sp),
                     ),
                     alignment: Alignment.center,
-                    child: AutoSizeText(
+                    child: const AutoSizeText(
                       '확인',
                       maxFontSize: 24,
                       style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),

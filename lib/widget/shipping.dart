@@ -49,14 +49,14 @@ class ShippingRegionPickerWidget extends StatelessWidget {
                         AutoSizeText(region,
                             maxFontSize: 24,
                             style: TextStyle(
-                                fontSize: 20.sp, color: Colors.white)),
+                                fontSize: 16, color: Colors.white)),
                       ],
                     ),
                     AutoSizeText(
                       '+${formatPriceWithCommas(model.shippingCosts[region] ?? 0)}원',
                       maxFontSize: 24,
                       style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize:16,
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),

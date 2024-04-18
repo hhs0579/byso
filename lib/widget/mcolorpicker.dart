@@ -29,7 +29,7 @@ class mcolorpicker extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 15.h),
           child: Text(
             model.legColor.isNotEmpty ? model.legColor : "색상을 선택하세요",
-            style: TextStyle(color: Colors.white, fontSize: 20.sp),
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
         Wrap(
@@ -43,7 +43,7 @@ class mcolorpicker extends StatelessWidget {
               },
               child: Container(
                 width: 140.w,
-                height: 80.h,
+                height: 70.h,
                 decoration: BoxDecoration(
                   color: isSelected
                       ? Colors.grey

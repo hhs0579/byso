@@ -47,49 +47,52 @@ class _mcustom5State extends State<mcustom5> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: const Color(0xff171717),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.h),
-          child: Container(
-            color: const Color(0xff171717),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBar(
-                  scrolledUnderElevation: 0,
-                  backgroundColor: const Color(0xff171717),
-                  title: InkWell(
-                    onTap: () {
-                  Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
-                    },
-                    child: SizedBox(
-                      width: width * 0.25,
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        scale: 3,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  centerTitle: false,
-                  automaticallyImplyLeading: false,
-                  leading: null,
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.menu),
-                      color: Colors.white,
-                      onPressed: toggleDrawer,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
         body: SizedBox(
           width: width,
           child: Column(
             children: [
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: _isDrawerOpen
+                          ? const Color(0xff171717)
+                          : Colors.transparent,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 20.h, left: 60.w, right: 30.w, bottom: 20.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .push(createRoute(const HomeRoute()));
+                              },
+                              child: SizedBox(
+                                width: width * 0.25,
+                                child: Image.asset(
+                                  'assets/images/logo.png',
+                                  scale: 3,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              icon: _isDrawerOpen
+                                  ? const Icon(Icons.close)
+                                  : const Icon(Icons.menu),
+                              color: Colors.white,
+                              onPressed: toggleDrawer,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -102,9 +105,7 @@ class _mcustom5State extends State<mcustom5> {
                         color: const Color(0xff171717),
                         width: double.infinity,
                         child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 40.w,
-                          ),
+                          padding: EdgeInsets.only(left: 60.w, right: 30.w),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -114,30 +115,33 @@ class _mcustom5State extends State<mcustom5> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const MarbleInfo()));
+                                      Navigator.of(context)
+                                          .push(createRoute(const mbyso()));
                                     },
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       'MARBLE INFO',
                                       maxFontSize: 40,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 30.sp,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                                Navigator.of(context)
-                          .push(createRoute(const mbyso()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const MarbleInfo()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))
                                 ],
+                              ),
+                              SizedBox(
+                                height: 10.h,
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -149,13 +153,13 @@ class _mcustom5State extends State<mcustom5> {
                                         'https://byso.kr/',
                                       );
                                     },
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       'BYSO HOMEPAGE',
                                       maxFontSize: 40,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 30.sp,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
@@ -177,6 +181,7 @@ class _mcustom5State extends State<mcustom5> {
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(left: 30.w, right: 30.w),
                         color: const Color(0xff101010),
                         width: width * 2,
                         height: 80.h,
@@ -192,14 +197,15 @@ class _mcustom5State extends State<mcustom5> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                              model.revertAndResetSelections(
-                                          context, 1);
+                                    model.revertAndResetSelections(context, 1);
                                   },
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '테이블 레그 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 22,
                                     style: TextStyle(
-                                        color: Color(0xff7D7D7D), fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -211,21 +217,23 @@ class _mcustom5State extends State<mcustom5> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Colors.grey[400],
-                                    size: 30.w,
+                                    size: 42.w,
                                   ),
                                 ),
                                 SizedBox(
                                   width: 30.w,
                                 ),
                                 InkWell(
-                                  onTap: () {                model.revertAndResetSelections(
-                                          context, 2);},
-                                  child: AutoSizeText(
+                                  onTap: () {
+                                    model.revertAndResetSelections(context, 2);
+                                  },
+                                  child: const AutoSizeText(
                                     '레그 컬러 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -237,21 +245,51 @@ class _mcustom5State extends State<mcustom5> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Colors.grey[400],
-                                    size: 30.w,
+                                    size: 42.w,
                                   ),
                                 ),
                                 SizedBox(
                                   width: 30.w,
                                 ),
                                 InkWell(
-                                  onTap: () {                model.revertAndResetSelections(
-                                          context, 3);},
-                                  child: AutoSizeText(
+                                  onTap: () {
+                                    model.revertAndResetSelections(context, 3);
+                                  },
+                                  child: const AutoSizeText(
                                     '상판 패턴 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(top: 10.h, bottom: 5.h),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Colors.grey[400],
+                                    size: 42.w,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 30.w,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    model.revertAndResetSelections(context, 4);
+                                  },
+                                  child: const AutoSizeText(
+                                    '부가정보 선택',
+                                    maxFontSize: 20,
+                                    style: TextStyle(
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -271,41 +309,15 @@ class _mcustom5State extends State<mcustom5> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                model.revertAndResetSelections(
-                                          context, 4);
+                                    model.revertAndResetSelections(context, 5);
                                   },
-                                  child: AutoSizeText(
-                                    '부가정보 선택',
-                                    maxFontSize: 18,
-                                    style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 10.h, bottom: 5.h),
-                                  child: Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Colors.grey[400],
-                                    size: 30.w,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 30.w,
-                                ),
-                                InkWell(
-                                  onTap: () {                model.revertAndResetSelections(
-                                          context, 5);},
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '최종 견적 확인',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 14.sp),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 )
                               ],
@@ -318,224 +330,234 @@ class _mcustom5State extends State<mcustom5> {
                         height: 300.h,
                         width: width,
                         child: Image.asset(
-                          model.currentPatternImage, // 이미지 경로를 적절히 변경하세요.
+                          model.getCurrentPatternImage2, // 이미지 경로를 적절히 변경하세요.
                           fit: BoxFit.contain,
                         ),
                       ),
                       Container(
+                          padding: EdgeInsets.symmetric(horizontal: 40.w),
                           child: Column(children: [
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          padding: EdgeInsets.only(left: 40.w),
-                          child: AutoSizeText(
-                            '견적 신청하기',
-                            maxFontSize: 22,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                            SizedBox(
+                              height: 10.h,
+                            ),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const AutoSizeText(
+                                '견적 신청하기',
+                                maxFontSize: 22,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30.h,
+                            ),
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                AutoSizeText(
-                                  '성함',
-                                  maxFontSize: 18,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14.sp),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AutoSizeText(
+                                      '성함',
+                                      maxFontSize: 18,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
+                                    ),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    Container(
+                                      alignment: Alignment.centerLeft,
+                                      width: width * 0.95,
+                                      height: 50.h,
+                                      child: TextField(
+                                        textAlign: TextAlign.left,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          hintText: '성함',
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400],
+                                              fontSize: 14),
+                                          contentPadding: EdgeInsets.fromLTRB(
+                                              10.0, // 왼쪽 패딩
+                                              (50.h - 14.sp) / 4, // 상단 패딩을 줄임
+                                              10.0, // 오른쪽 패딩
+                                              (50.h - 14.sp) / 4 // 하단 패딩을 줄임
+                                              ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                                 SizedBox(
-                                  height: 10.h,
+                                  height: 30.h,
                                 ),
-                                Container(
-                                  alignment: Alignment.centerLeft,
-                                  width: width * 0.95,
-                                  height: 50.h,
-                                  child: TextField(
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(color: Colors.white),
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      hintText: '성함',
-                                      hintStyle: TextStyle(
-                                          color: Colors.grey[400],
-                                          fontSize: 40.sp),
-                                      contentPadding: EdgeInsets.fromLTRB(
-                                          10.0, // 왼쪽 패딩
-                                          (50.h - 14.sp) / 4, // 상단 패딩을 줄임
-                                          10.0, // 오른쪽 패딩
-                                          (50.h - 14.sp) / 4 // 하단 패딩을 줄임
-                                          ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AutoSizeText(
+                                      '연락처',
+                                      maxFontSize: 18,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
                                     ),
-                                  ),
-                                )
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.95,
+                                      height: 50.h,
+                                      child: TextField(
+                                        textAlign: TextAlign.left,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          hintText: '연락처',
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400],
+                                              fontSize: 14),
+                                          contentPadding: EdgeInsets.fromLTRB(
+                                              10.0, // 왼쪽 패딩
+                                              (50.h - 14.sp) / 4, // 상단 패딩을 줄임
+                                              10.0, // 오른쪽 패딩
+                                              (50.h - 14.sp) / 4 // 하단 패딩을 줄임
+                                              ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const AutoSizeText(
+                                      '이메일',
+                                      maxFontSize: 18,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
+                                    ),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    SizedBox(
+                                      width: width * 0.95,
+                                      height: 50.h,
+                                      child: TextField(
+                                        textAlign: TextAlign.left,
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                        decoration: InputDecoration(
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              borderSide: const BorderSide(
+                                                  color: Colors.white)),
+                                          hintText: '이메일',
+                                          hintStyle: TextStyle(
+                                              color: Colors.grey[400],
+                                              fontSize: 14),
+                                          contentPadding: EdgeInsets.fromLTRB(
+                                              10.0, // 왼쪽 패딩
+                                              (50.h - 14.sp) / 4, // 상단 패딩을 줄임
+                                              10.0, // 오른쪽 패딩
+                                              (50.h - 14.sp) / 4 // 하단 패딩을 줄임
+                                              ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
                               ],
                             ),
                             SizedBox(
-                              height: 20.h,
+                              height: 30.h,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AutoSizeText(
-                                  '연락처',
-                                  maxFontSize: 18,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14.sp),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                SizedBox(
-                                  width: width * 0.95,
-                                  height: 50.h,
-                                  child: TextField(
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(color: Colors.white),
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      hintText: '연락처',
-                                      hintStyle: TextStyle(
-                                          color: Colors.grey[400],
-                                          fontSize: 40.sp),
-                                      contentPadding: EdgeInsets.fromLTRB(
-                                          10.0, // 왼쪽 패딩
-                                          (50.h - 14.sp) / 4, // 상단 패딩을 줄임
-                                          10.0, // 오른쪽 패딩
-                                          (50.h - 14.sp) / 4 // 하단 패딩을 줄임
-                                          ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: const AutoSizeText(
+                                      '최종 견적을 확인해주세요',
+                                      maxFontSize: 20,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 14),
                                     ),
                                   ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AutoSizeText(
-                                  '이메일',
-                                  maxFontSize: 18,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14.sp),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                SizedBox(
-                                  width: width * 0.95,
-                                  height: 50.h,
-                                  child: TextField(
-                                    textAlign: TextAlign.left,
-                                    style: const TextStyle(color: Colors.white),
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      focusedBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                          borderSide: const BorderSide(
-                                              color: Colors.white)),
-                                      hintText: '이메일',
-                                      hintStyle: TextStyle(
-                                          color: Colors.grey[400],
-                                          fontSize: 40.sp),
-                                      contentPadding: EdgeInsets.fromLTRB(
-                                          10.0, // 왼쪽 패딩
-                                          (50.h - 14.sp) / 4, // 상단 패딩을 줄임
-                                          10.0, // 오른쪽 패딩
-                                          (50.h - 14.sp) / 4 // 하단 패딩을 줄임
-                                          ),
-                                    ),
+                                  SizedBox(
+                                    height: 30.h,
                                   ),
-                                )
-                              ],
+                                  Container(
+                                    color: Colors.grey[500],
+                                    width: width,
+                                    height: 1,
+                                  ),
+                                  const moption(),
+                                  SizedBox(
+                                    height: 30.h,
+                                  )
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: AutoSizeText(
-                            '최종 견적을 확인해주세요',
-                            maxFontSize: 20,
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20.sp),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        Container(
-                          color: Colors.grey[500],
-                          width: width,
-                          height: 1,
-                        ),
-                        SizedBox(
-                          height: 30.h,
-                        ),
-                        const moption()
-                      ])),
+                          ])),
                     ],
                   ),
                 ),
               ),
               Container(
                 padding: EdgeInsets.only(
-                    top: 20.h, right: 30.w, left: 30.w, bottom: 20.h),
+                    top: 20.h, right: 50.w, left: 50.w, bottom: 20.h),
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
                   color: const Color(0xff101010),
@@ -543,15 +565,14 @@ class _mcustom5State extends State<mcustom5> {
                       top: BorderSide(color: Colors.grey[500]!, width: 1)),
                 ),
                 width: width,
-                height: height * 0.2,
+                height: height * 0.18,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
                       '가격',
                       maxFontSize: 18,
-                      style:
-                          TextStyle(color: Colors.grey[400], fontSize: 16.sp),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 14),
                     ),
                     Consumer<DeskCustomizationModel>(
                       builder: (context, model, child) {
@@ -561,8 +582,8 @@ class _mcustom5State extends State<mcustom5> {
                           '${formatPriceWithCommas(model.currentPrice)}원',
                           maxFontSize: 60,
                           textAlign: TextAlign.start,
-                          style:
-                              TextStyle(fontSize: 60.sp, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 24, color: Colors.white),
                         );
                       },
                     ),
@@ -574,19 +595,20 @@ class _mcustom5State extends State<mcustom5> {
                         mmyAlert(context);
                       },
                       child: Container(
+                        
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(5)),
-                        width: width * 0.95,
-                        height: height * 0.07,
+                        width: width * 0.9,
+                        height: 48.h,
                         alignment: Alignment.center,
-                        child: AutoSizeText(
+                        child: const AutoSizeText(
                           '견적서 보내기',
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 12.sp,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold),
-                          maxFontSize: 18,
+                          maxFontSize: 20,
                         ),
                       ),
                     )

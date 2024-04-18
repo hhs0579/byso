@@ -22,11 +22,15 @@ class LengthPickerWidget extends StatelessWidget {
         SizedBox(height: 30.h),
         Container(
           alignment: Alignment.centerLeft,
-          child: AutoSizeText(
+          child: const AutoSizeText(
             '가로길이(mm)',
             maxFontSize: 18,
-            style: TextStyle(fontSize: 14.sp, color: Colors.white),
+            style: TextStyle(
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w600),
           ),
+        ),
+        SizedBox(
+          height: 10.h,
         ),
         ...availableLengths.map((length) {
           bool isSelected = model.selectedLength == length;
@@ -57,15 +61,15 @@ class LengthPickerWidget extends StatelessWidget {
                       const SizedBox(width: 8),
                       AutoSizeText(length,
                           maxFontSize: 24,
-                          style:
-                              TextStyle(fontSize: 20.sp, color: Colors.white)),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white)),
                     ],
                   ),
                   AutoSizeText(
                     '+ ${model.getLengthPriceInfo(length)}',
                     maxFontSize: 24,
-                    style: TextStyle(
-                        fontSize: 20.sp,
+                    style: const TextStyle(
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),

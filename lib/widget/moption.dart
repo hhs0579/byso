@@ -23,7 +23,7 @@ class moption extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.symmetric(vertical: 20.h),
           child: _buildOptionItem('테이블 레그', model.legType,
               model.currentLegImage, model.getLegTypePrice(), context),
         ),
@@ -33,7 +33,7 @@ class moption extends StatelessWidget {
           width: width,
         ),
         Container(
-          padding: EdgeInsets.all(10.w),
+          padding: EdgeInsets.symmetric(vertical: 20.h),
           child: _buildColorOptionItem(
             '레그 컬러',
             model.legColor,
@@ -48,7 +48,7 @@ class moption extends StatelessWidget {
           width: width,
         ),
         Container(
-          padding: EdgeInsets.all(10.w),
+        padding: EdgeInsets.symmetric(vertical: 20.h),
           child: _buildOptionItem('패턴', model.pattern,
               model.getCurrentPatternImage(), model.getPatternPrice(), context),
         ),
@@ -60,7 +60,7 @@ class moption extends StatelessWidget {
         Column(
           children: [
             Container(
-              padding: EdgeInsets.all(10.w),
+             padding: EdgeInsets.symmetric(vertical: 20.h),
               child: _buildOptionItem('가로길이', model.selectedLength, null,
                   model.getLengthPrice(), context),
             ),
@@ -72,7 +72,7 @@ class moption extends StatelessWidget {
           ],
         ),
         Container(
-          padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.symmetric(vertical: 20.h),
           child: _buildOptionItem('배송비', model.shippingRegion, null,
               model.getShippingCost(), context),
         ),
@@ -90,7 +90,7 @@ class moption extends StatelessWidget {
     final model = Provider.of<DeskCustomizationModel>(context, listen: false);
 
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
       child: Column(
         children: [
           InkWell(
@@ -120,20 +120,22 @@ class moption extends StatelessWidget {
                 AutoSizeText(
                   title,
                   maxFontSize: 30,
-                  style: TextStyle(color: Colors.white, fontSize: 24.sp),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 Row(
                   children: [
                     AutoSizeText(
                       '옵션변경',
                       maxFontSize: 30,
-                      style:
-                          TextStyle(color: Colors.grey[500], fontSize: 24.sp),
+                      style: TextStyle(color: Colors.grey[500], fontSize: 14),
+                    ),
+                    const SizedBox(
+                      width: 5,
                     ),
                     Image.asset(
                       'assets/images/write.png',
-                      width: 30.w,
-                      height: 30.h,
+                      width: 16.6,
+                      height: 14.4,
                     )
                   ],
                 ),
@@ -149,28 +151,28 @@ class moption extends StatelessWidget {
                   if (imagePath != null)
                     Image.asset(
                       imagePath,
-                      width: 120.w,
-                      height: 60.h,
+                      width: 56,
+                      height: 56,
                       fit: BoxFit.cover,
                       scale: 2,
                     ),
                   SizedBox(
-                    width: 10.w,
+                    width: 30.w,
                   ),
                   AutoSizeText(value,
                       maxFontSize: 30,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 24.sp,
-                          fontWeight: FontWeight.bold)),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600)),
                 ],
               ),
               AutoSizeText('+${formatPriceWithCommas(optionPrice)}',
                   maxFontSize: 30,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 30.sp,
-                      fontWeight: FontWeight.bold)),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600)),
             ],
           )
         ],
@@ -186,7 +188,7 @@ class moption extends StatelessWidget {
     BuildContext context,
   ) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 10.h),
       child: Column(
         children: [
           InkWell(
@@ -216,20 +218,19 @@ class moption extends StatelessWidget {
                 AutoSizeText(
                   title,
                   maxFontSize: 30,
-                  style: TextStyle(color: Colors.white, fontSize: 24.sp),
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
                 ),
                 Row(
                   children: [
                     AutoSizeText(
                       '옵션변경',
                       maxFontSize: 30,
-                      style:
-                          TextStyle(color: Colors.grey[500], fontSize: 24.sp),
+                      style: TextStyle(color: Colors.grey[500], fontSize: 14),
                     ),
                     Image.asset(
                       'assets/images/write.png',
-                      width: 30.w,
-                      height: 30.h,
+                      width: 16.6,
+                      height: 14.4,
                     )
                   ],
                 ),
@@ -240,23 +241,23 @@ class moption extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 120.w,
-                height: 60.h,
+                width: 56,
+                height: 56,
                 decoration: BoxDecoration(
                   color: color,
                   border: Border.all(color: Colors.white),
                 ),
               ),
               SizedBox(
-                width: 10.w,
+                width: 30.w,
               ),
               AutoSizeText(
                 value,
                 maxFontSize: 30,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600),
               ),
             ],
           ),

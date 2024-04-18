@@ -43,6 +43,7 @@ dependencies:
   intl:
   url_launcher:
   html:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

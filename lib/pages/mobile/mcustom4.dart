@@ -48,49 +48,52 @@ class _mcustom4State extends State<mcustom4> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: const Color(0xff171717),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.h),
-          child: Container(
-            color: const Color(0xff171717),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBar(
-                  scrolledUnderElevation: 0,
-                  backgroundColor: const Color(0xff171717),
-                  title: InkWell(
-                    onTap: () {
-                Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
-                    },
-                    child: SizedBox(
-                      width: width * 0.25,
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        scale: 3,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  centerTitle: false,
-                  automaticallyImplyLeading: false,
-                  leading: null,
-                  actions: [
-                    IconButton(
-                      icon: const Icon(Icons.menu),
-                      color: Colors.white,
-                      onPressed: toggleDrawer,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
         body: SizedBox(
           width: width,
           child: Column(
             children: [
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: _isDrawerOpen
+                          ? const Color(0xff171717)
+                          : Colors.transparent,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 20.h, left: 60.w, right: 30.w, bottom: 20.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .push(createRoute(const HomeRoute()));
+                              },
+                              child: SizedBox(
+                                width: width * 0.25,
+                                child: Image.asset(
+                                  'assets/images/logo.png',
+                                  scale: 3,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+                            IconButton(
+                              icon: _isDrawerOpen
+                                  ? const Icon(Icons.close)
+                                  : const Icon(Icons.menu),
+                              color: Colors.white,
+                              onPressed: toggleDrawer,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -103,9 +106,7 @@ class _mcustom4State extends State<mcustom4> {
                         color: const Color(0xff171717),
                         width: double.infinity,
                         child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 40.w,
-                          ),
+                          padding: EdgeInsets.only(left: 60.w, right: 30.w),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -115,30 +116,33 @@ class _mcustom4State extends State<mcustom4> {
                                 children: [
                                   InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const MarbleInfo()));
+                                      Navigator.of(context)
+                                          .push(createRoute(const mbyso()));
                                     },
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       'MARBLE INFO',
                                       maxFontSize: 40,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 30.sp,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                              Navigator.of(context)
-                          .push(createRoute(const mbyso()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const MarbleInfo()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))
                                 ],
+                              ),
+                              SizedBox(
+                                height: 10.h,
                               ),
                               Row(
                                 mainAxisAlignment:
@@ -150,13 +154,13 @@ class _mcustom4State extends State<mcustom4> {
                                         'https://byso.kr/',
                                       );
                                     },
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       'BYSO HOMEPAGE',
                                       maxFontSize: 40,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 30.sp,
-                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
@@ -178,6 +182,7 @@ class _mcustom4State extends State<mcustom4> {
                         ),
                       ),
                       Container(
+                        padding: EdgeInsets.only(left: 30.w, right: 30.w),
                         color: const Color(0xff101010),
                         width: width * 2,
                         height: 80.h,
@@ -195,11 +200,13 @@ class _mcustom4State extends State<mcustom4> {
                                   onTap: () {
                                     model.revertAndResetSelections(context, 1);
                                   },
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '테이블 레그 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 22,
                                     style: TextStyle(
-                                        color: Color(0xff7D7D7D), fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -211,7 +218,7 @@ class _mcustom4State extends State<mcustom4> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Colors.grey[400],
-                                    size: 30.w,
+                                    size: 42.w,
                                   ),
                                 ),
                                 SizedBox(
@@ -221,12 +228,13 @@ class _mcustom4State extends State<mcustom4> {
                                   onTap: () {
                                     model.revertAndResetSelections(context, 2);
                                   },
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '레그 컬러 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -238,7 +246,7 @@ class _mcustom4State extends State<mcustom4> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Colors.grey[400],
-                                    size: 30.w,
+                                    size: 42.w,
                                   ),
                                 ),
                                 SizedBox(
@@ -248,12 +256,13 @@ class _mcustom4State extends State<mcustom4> {
                                   onTap: () {
                                     model.revertAndResetSelections(context, 3);
                                   },
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '상판 패턴 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ),
                                 SizedBox(
@@ -265,7 +274,7 @@ class _mcustom4State extends State<mcustom4> {
                                   child: Icon(
                                     Icons.arrow_forward_ios,
                                     color: Colors.grey[400],
-                                    size: 30.w,
+                                    size: 42.w,
                                   ),
                                 ),
                                 SizedBox(
@@ -275,12 +284,13 @@ class _mcustom4State extends State<mcustom4> {
                                   onTap: () {
                                     model.revertAndResetSelections(context, 4);
                                   },
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '부가정보 선택',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 14.sp),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ),
                                 SizedBox(
@@ -300,12 +310,13 @@ class _mcustom4State extends State<mcustom4> {
                                 ),
                                 InkWell(
                                   onTap: () {},
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '최종 견적 확인',
-                                    maxFontSize: 18,
+                                    maxFontSize: 20,
                                     style: TextStyle(
-                                        color: const Color(0xff7D7D7D),
-                                        fontSize: 14.sp),
+                                        color: Color(0xff7D7D7D),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 )
                               ],
@@ -318,7 +329,7 @@ class _mcustom4State extends State<mcustom4> {
                         height: 300.h,
                         width: width,
                         child: Image.asset(
-                          model.currentPatternImage, // 이미지 경로를 적절히 변경하세요.
+                          model.getCurrentPatternImage2, // 이미지 경로를 적절히 변경하세요.
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -326,16 +337,16 @@ class _mcustom4State extends State<mcustom4> {
                           child: Column(children: [
                         Container(
                           padding: EdgeInsets.only(
-                              top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
+                              top: 40.h, right: 40.w, left: 40.w, bottom: 40.h),
                           child: Column(
                             children: [
                               Container(
                                 alignment: Alignment.centerLeft,
-                                child: AutoSizeText(
+                                child: const AutoSizeText(
                                   '부가정보를 선택해주세요',
                                   maxFontSize: 20,
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 18.sp),
+                                      color: Colors.white, fontSize: 14),
                                 ),
                               ),
                               const LengthPickerWidget(),
@@ -352,12 +363,15 @@ class _mcustom4State extends State<mcustom4> {
                               ),
                               Container(
                                   alignment: Alignment.centerLeft,
-                                  child: AutoSizeText(
+                                  child: const AutoSizeText(
                                     '배송비',
                                     maxFontSize: 18,
                                     style: TextStyle(
-                                        fontSize: 14.sp, color: Colors.white),
+                                        fontSize: 16, color: Colors.white),
                                   )),
+                              SizedBox(
+                                height: 10.h,
+                              ),
                               const ShippingRegionPickerWidget(),
                             ],
                           ),
@@ -369,7 +383,7 @@ class _mcustom4State extends State<mcustom4> {
               ),
               Container(
                 padding: EdgeInsets.only(
-                    top: 20.h, right: 30.w, left: 30.w, bottom: 20.h),
+                    top: 20.h, right: 50.w, left: 50.w, bottom: 20.h),
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
                   color: const Color(0xff101010),
@@ -377,15 +391,14 @@ class _mcustom4State extends State<mcustom4> {
                       top: BorderSide(color: Colors.grey[500]!, width: 1)),
                 ),
                 width: width,
-                height: height * 0.2,
+                height: height * 0.18,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
                       '가격',
                       maxFontSize: 18,
-                      style:
-                          TextStyle(color: Colors.grey[400], fontSize: 16.sp),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 14),
                     ),
                     Consumer<DeskCustomizationModel>(
                       builder: (context, model, child) {
@@ -395,8 +408,8 @@ class _mcustom4State extends State<mcustom4> {
                           '${formatPriceWithCommas(model.currentPrice)}원',
                           maxFontSize: 60,
                           textAlign: TextAlign.start,
-                          style:
-                              TextStyle(fontSize: 60.sp, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 24, color: Colors.white),
                         );
                       },
                     ),
@@ -412,17 +425,19 @@ class _mcustom4State extends State<mcustom4> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            width: width * 0.465,
-                            height: height * 0.07,
+                            width: width * 0.45,
+                            height: 48.h,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 border:
                                     Border.all(color: Colors.white, width: 1)),
-                            child: AutoSizeText(
+                            child: const AutoSizeText(
                               '이전',
-                              maxFontSize: 18,
+                              maxFontSize: 20,
                               style: TextStyle(
-                                  fontSize: 16.sp, color: Colors.white),
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
@@ -445,18 +460,20 @@ class _mcustom4State extends State<mcustom4> {
                           },
                           child: Container(
                             alignment: Alignment.center,
-                            width: width * 0.465,
-                            height: height * 0.07,
+                            width: width * 0.45,
+                            height: 48.h,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(5),
                                 border:
                                     Border.all(color: Colors.white, width: 1)),
-                            child: AutoSizeText(
+                            child: const AutoSizeText(
                               '다음',
-                              maxFontSize: 18,
+                              maxFontSize: 20,
                               style: TextStyle(
-                                  fontSize: 16.sp, color: Colors.black),
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

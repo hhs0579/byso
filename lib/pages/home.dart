@@ -21,95 +21,97 @@ class home extends StatelessWidget {
     const mobileWidthThreshold = 600;
 
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.h),
-          child: Container(
-            color: const Color(0xff171717),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppBar(
-                  scrolledUnderElevation: 0,
-                  backgroundColor: const Color(0xff171717),
-                  title: InkWell(
-                    onTap: () {
-                     Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 10),
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        scale: 4,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                  centerTitle: false,
-                  automaticallyImplyLeading: false,
-                  leading: null,
-                  actions: [
-                    Row(
+      body: Stack(
+        children: [
+          Container(
+            color: const Color(0xff0C0C0C),
+            height: height,
+            width: width,
+            child: Image.asset(
+              'assets/images/main.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    color: Colors.transparent,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        InkWell(
-                          onTap: () {
-                                 Navigator.of(context)
-                          .push(createRoute(const mbyso()));
-                          },
-                          child: AutoSizeText(
-                            'MARBLE INFO',
-                            maxFontSize: 20,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: 35.h, left: 20.w, right: 20.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .push(createRoute(const HomeRoute()));
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  child: Image.asset(
+                                    'assets/images/logo.png',
+                                    scale: 4,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(createRoute(const mbyso()));
+                                    },
+                                    child: AutoSizeText(
+                                      'MARBLE INFO',
+                                      maxFontSize: 20,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.03,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      launch2(
+                                        'https://byso.kr/',
+                                      );
+                                    },
+                                    child: AutoSizeText(
+                                      'BYSO HOMEPAGE',
+                                      maxFontSize: 20,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.02,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                        SizedBox(
-                          width: width * 0.03,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            launch2(
-                              'https://byso.kr/',
-                            );
-                          },
-                          child: AutoSizeText(
-                            'BYSO HOMEPAGE',
-                            maxFontSize: 20,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: width * 0.02,
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        body: Stack(
-          children: [
-            Container(
-              color: const Color(0xff0C0C0C),
-              height: height,
-              width: width,
-              child: Image.asset(
-                'assets/images/main.png',
-                fit: BoxFit.cover,
+                  )
+                ],
               ),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: [
                   const Text('바이소메트릭 마블 커스터마이징',
                       style: TextStyle(
@@ -145,8 +147,8 @@ class home extends StatelessWidget {
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      height: height * 0.04,
-                      width: width * 0.05,
+                      height: 50.h,
+                      width: 100.w,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white, width: 1),
                         borderRadius: BorderRadius.circular(5),
@@ -155,15 +157,18 @@ class home extends StatelessWidget {
                         '시작하기',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w200),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                   )
                 ],
               ),
-            )
-          ],
-        ));
+              const SizedBox()
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

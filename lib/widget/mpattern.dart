@@ -34,8 +34,8 @@ class mpatternPicker extends StatelessWidget {
           child: AutoSizeText(
             model.pattern != '선택안함' ? model.pattern : patterns.keys.first,
             maxFontSize: 60,
-            style: TextStyle(
-              fontSize: 40.sp,
+            style: const TextStyle(
+              fontSize: 16,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -55,8 +55,8 @@ class mpatternPicker extends StatelessWidget {
             return InkWell(
               onTap: () => model.setPattern(patternName),
               child: Container(
-                width: 140.w,
-                height: 80.h,
+                width: 48,
+                height: 48,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(imagePath),

@@ -1,6 +1,7 @@
 import 'package:byso/pages/home.dart';
 import 'package:byso/pages/mobile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:lottie/lottie.dart';
 
@@ -51,8 +52,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
             children: [
               SizedBox(
                   // 크기 지정
-                  width: 500,
-                  height: 500,
+                  width: 500.w,
+                  height: 500.h,
                   // 내가 저장한 lottie 에셋 지정
                   child: Lottie.asset('assets/lotties/lottie.json',
                       controller: _controller, onLoaded: (composition) {
