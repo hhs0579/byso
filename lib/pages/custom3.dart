@@ -40,8 +40,8 @@ class custom3 extends StatelessWidget {
                     backgroundColor: const Color(0xff171717),
                     title: InkWell(
                       onTap: () {
-                         Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
+                        Navigator.of(context)
+                            .push(createRoute(const HomeRoute()));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(left: 10),
@@ -60,8 +60,8 @@ class custom3 extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                    Navigator.of(context)
-                          .push(createRoute(const mbyso()));
+                              Navigator.of(context)
+                                  .push(createRoute(const mbyso()));
                             },
                             child: AutoSizeText(
                               'MARBLE INFO',
@@ -159,8 +159,7 @@ class custom3 extends StatelessWidget {
                       child: AutoSizeText(
                         '상판 패턴 선택',
                         maxFontSize: 18,
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 14.sp),
+                        style: TextStyle(color: Colors.white, fontSize: 14.sp),
                       ),
                     ),
                     Padding(
@@ -171,9 +170,7 @@ class custom3 extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       child: AutoSizeText(
                         '부가정보 선택',
                         maxFontSize: 18,
@@ -189,13 +186,12 @@ class custom3 extends StatelessWidget {
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                      
-                      },
+                      onTap: () {},
                       child: AutoSizeText(
                         '최종 견적 확인',
                         maxFontSize: 18,
-                        style: TextStyle(color: Color(0xff7D7D7D), fontSize: 14.sp),
+                        style: TextStyle(
+                            color: const Color(0xff7D7D7D), fontSize: 14.sp),
                       ),
                     )
                   ],
@@ -241,9 +237,9 @@ class custom3 extends StatelessWidget {
                           SizedBox(
                             height: 30.h,
                           ),
-                          Container(
-                              alignment: Alignment.centerLeft,
-                              child: const PatternPickerWidget()),
+                          const PatternPicker1Widget(),
+                          const SizedBox(height: 16.0),
+                          const PatternPicker2Widget(),
                         ],
                       ),
                     ),
@@ -319,8 +315,8 @@ class custom3 extends StatelessWidget {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        Navigator.of(context)
-                                            .push(createRoute(customRoute4()));
+                                        Navigator.of(context).push(
+                                            createRoute(const customRoute4()));
                                       },
                                       child: Container(
                                         alignment: Alignment.center,
