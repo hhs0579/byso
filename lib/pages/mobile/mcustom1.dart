@@ -346,11 +346,9 @@ class _mcustom1State extends State<mcustom1> {
                                       alignment: Alignment.centerLeft,
                                       child: const AutoSizeText(
                                         '테이블 레그를 선택해주세요',
-                                        maxFontSize: 30,
+                                        maxFontSize: 20,
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
+                                            color: Colors.white, fontSize: 16),
                                       ),
                                     ),
                                     SizedBox(
@@ -370,31 +368,22 @@ class _mcustom1State extends State<mcustom1> {
                                             '사리넨(정원형)'); // 사용자 선택 반영
                                         // 가격 누적
                                       },
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.15,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const AutoSizeText(
-                                              '사리넨(정원형)',
-                                              maxFontSize: 24,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
+                                                    width: width * 0.44,
+                                                    height: height * 0.3,
                                                     decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xff171717),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
@@ -408,202 +397,101 @@ class _mcustom1State extends State<mcustom1> {
                                                             : const Border()),
                                                     child: Image.asset(
                                                       'assets/images/legA.png',
-                                                      fit: BoxFit.contain,
+                                                      scale: 0.8,
                                                     )),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
+                                                const AutoSizeText(
+                                                  '사리넨(정원형)',
+                                                  maxFontSize: 24,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w800),
+                                                ),
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              model.setLegType(
+                                                  '사리넨(타원형)'); // 사용자 선택 반영
+                                              // 가격 누적
+                                            },
+                                            child: SizedBox(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                      width: width * 0.44,
+                                                      height: height * 0.3,
+                                                      decoration: BoxDecoration(
+                                                          color: const Color(
+                                                              0xff171717),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(5),
+                                                          border: model
+                                                                      .legType ==
+                                                                  '사리넨(타원형)'
+                                                              ? Border.all(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  width: 1.5,
+                                                                )
+                                                              : const Border()),
+                                                      child: Image.asset(
+                                                        'assets/images/legA.png',
+                                                        scale: 0.8,
+                                                      )),
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  const AutoSizeText(
+                                                    '사리넨(타원형)',
+                                                    maxFontSize: 24,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
                                     ),
                                     SizedBox(
                                       height: 30.h,
                                     ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType(
-                                            '사리넨(타원형)'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.15,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const AutoSizeText(
-                                              '사리넨(타원형)',
-                                              maxFontSize: 24,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w800),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            model
+                                                .setLegType('개트윅'); // 사용자 선택 반영
+                                            // 가격 누적
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 20.h),
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
+                                                    width: width * 0.44,
+                                                    height: height * 0.3,
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: model.legType ==
-                                                                '사리넨(타원형)'
-                                                            ? Border.all(
-                                                                color: Colors
-                                                                    .white,
-                                                                width: 1.5,
-                                                              )
-                                                            : const Border()),
-                                                    child: Image.asset(
-                                                      'assets/images/legA.png',
-                                                      fit: BoxFit.contain,
-                                                    )),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType('개트윅'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(top: 20.h),
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.17,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: const AutoSizeText(
-                                                '개트윅',
-                                                maxFontSize: 24,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
-                                                    decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xff171717),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
@@ -617,97 +505,46 @@ class _mcustom1State extends State<mcustom1> {
                                                             : const Border()),
                                                     child: Image.asset(
                                                         'assets/images/legB.png',
-                                                        fit: BoxFit.cover)),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
+                                                        scale: 0.8)),
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: const AutoSizeText(
+                                                    '개트윅',
+                                                    maxFontSize: 24,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
+                                                ),
                                               ],
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType('샹베리'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(top: 20.h),
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.17,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: const AutoSizeText(
-                                                '샹베리',
-                                                maxFontSize: 24,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
+                                        InkWell(
+                                          onTap: () {
+                                            model
+                                                .setLegType('샹베리'); // 사용자 선택 반영
+                                            // 가격 누적
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 20.h),
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
+                                                    width: width * 0.44,
+                                                    height: height * 0.3,
                                                     decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xff171717),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
@@ -720,98 +557,57 @@ class _mcustom1State extends State<mcustom1> {
                                                               )
                                                             : const Border()),
                                                     child: Image.asset(
-                                                        'assets/images/legC.png',
-                                                        fit: BoxFit.cover)),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
+                                                      'assets/images/legC.png',
+                                                      scale: 0.8,
+                                                    )),
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: const AutoSizeText(
+                                                    '샹베리',
+                                                    maxFontSize: 24,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
+                                                ),
                                               ],
-                                            )
-                                          ],
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
+                                    SizedBox(
+                                      height: 30.h,
                                     ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType('라고스'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(top: 20.h),
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.17,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: const AutoSizeText(
-                                                '라고스',
-                                                maxFontSize: 24,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            model
+                                                .setLegType('라고스'); // 사용자 선택 반영
+                                            // 가격 누적
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 20.h),
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
+                                                    width: width * 0.44,
+                                                    height: height * 0.3,
                                                     decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xff171717),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
@@ -824,212 +620,48 @@ class _mcustom1State extends State<mcustom1> {
                                                               )
                                                             : const Border()),
                                                     child: Image.asset(
-                                                        'assets/images/legD.png',
-                                                        fit: BoxFit.cover)),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
+                                                      'assets/images/legD.png',
+                                                      scale: 0.8,
+                                                    )),
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: AutoSizeText(
+                                                    '라고스',
+                                                    maxFontSize: 24,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14.sp,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
+                                                ),
                                               ],
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType('디디모스'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(top: 20.h),
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.17,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: const AutoSizeText(
-                                                '디디모스',
-                                                maxFontSize: 24,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
+                                        InkWell(
+                                          onTap: () {
+                                            model.setLegType(
+                                                '리프 다이닝'); // 사용자 선택 반영
+                                            // 가격 누적
+                                          },
+                                          child: Container(
+                                            padding: EdgeInsets.only(top: 20.h),
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
+                                                    width: width * 0.44,
+                                                    height: height * 0.3,
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: model.legType ==
-                                                                '디디모스'
-                                                            ? Border.all(
-                                                                color: Colors
-                                                                    .white,
-                                                                width: 1.5,
-                                                              )
-                                                            : const Border()),
-                                                    child: Image.asset(
-                                                        'assets/images/legE.png',
-                                                        fit: BoxFit.contain)),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    Container(
-                                      color: Colors.grey[500],
-                                      width: width,
-                                      height: 1,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        model.setLegType('리프 다이닝'); // 사용자 선택 반영
-                                        // 가격 누적
-                                      },
-                                      child: Container(
-                                        padding: EdgeInsets.only(top: 20.h),
-                                        alignment: Alignment.centerLeft,
-                                        width: width,
-                                        height: height * 0.15,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              alignment: Alignment.centerLeft,
-                                              child: const AutoSizeText(
-                                                '리프 다이닝',
-                                                maxFontSize: 24,
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Row(
-                                              children: [
-                                                Container(
-                                                    width: width * 0.11,
-                                                    height: height * 0.07,
-                                                    decoration: BoxDecoration(
+                                                        color: const Color(
+                                                            0xff171717),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5),
@@ -1042,58 +674,82 @@ class _mcustom1State extends State<mcustom1> {
                                                               )
                                                             : const Border()),
                                                     child: Image.asset(
-                                                        'assets/images/legF.png',
-                                                        fit: BoxFit.contain)),
-                                                SizedBox(width: 45.w),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      '소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '제조사',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color:
-                                                              Colors.grey[500]),
-                                                    ),
-                                                  ],
+                                                      'assets/images/legF.png',
+                                                      scale: 0.8,
+                                                    )),
+                                                SizedBox(
+                                                  height: 10.h,
                                                 ),
-                                                SizedBox(width: 30.w),
-                                                const Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'HPL 소재',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    ),
-                                                    AutoSizeText(
-                                                      '플랜트란스',
-                                                      maxFontSize: 14,
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          color: Colors.white),
-                                                    )
-                                                  ],
-                                                )
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: const AutoSizeText(
+                                                    '리프 다이닝',
+                                                    maxFontSize: 24,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w800),
+                                                  ),
+                                                ),
                                               ],
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
+                                    InkWell(
+                                        onTap: () {
+                                          model.setLegType('디디모스'); // 사용자 선택 반영
+                                          // 가격 누적
+                                        },
+                                        child: Container(
+                                            padding: EdgeInsets.only(top: 20.h),
+                                            alignment: Alignment.centerLeft,
+                                            child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                      width: width * 0.44,
+                                                      height: height * 0.3,
+                                                      decoration: BoxDecoration(
+                                                          color: const Color(
+                                                              0xff171717),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(5),
+                                                          border: model
+                                                                      .legType ==
+                                                                  '디디모스'
+                                                              ? Border.all(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  width: 1.5,
+                                                                )
+                                                              : const Border()),
+                                                      child: Image.asset(
+                                                        'assets/images/legE.png',
+                                                        scale: 0.8,
+                                                      )),
+                                                  SizedBox(
+                                                    height: 10.h,
+                                                  ),
+                                                  Container(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: AutoSizeText(
+                                                      '디디모스',
+                                                      maxFontSize: 24,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 18.sp,
+                                                          fontWeight:
+                                                              FontWeight.w800),
+                                                    ),
+                                                  ),
+                                                ]))),
                                   ],
                                 ),
                               ),

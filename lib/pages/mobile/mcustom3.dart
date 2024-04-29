@@ -356,9 +356,18 @@ class _mcustom3State extends State<mcustom3> {
                             SizedBox(
                               height: 30.h,
                             ),
-                            Container(
-                                alignment: Alignment.centerLeft,
-                                child: const mpatternPicker()),
+                            Column(
+                              children: [
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: const mPatternPicker1Widget(),
+                                ),
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: const mPatternPicker2Widget(),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),

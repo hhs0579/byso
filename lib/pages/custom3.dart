@@ -211,40 +211,50 @@ class custom3 extends StatelessWidget {
                   color: const Color(0xff101010),
                   height: height,
                   width: width * 0.28,
-                  child: Column(children: [
-                    Container(
-                      padding: EdgeInsets.only(
-                          top: 40.h, right: 30.w, left: 30.w, bottom: 40.h),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: AutoSizeText(
-                              '상판 패턴을 선택해주세요',
-                              maxFontSize: 20,
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 20.sp),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                  top: 40.h,
+                                  right: 30.w,
+                                  left: 30.w,
+                                  bottom: 40.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    child: AutoSizeText(
+                                      '상판 패턴을 선택해주세요',
+                                      maxFontSize: 20,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20.sp),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Container(
+                                    color: Colors.grey[500],
+                                    width: width * 0.25,
+                                    height: 1,
+                                  ),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  const PatternPicker1Widget(),
+                                  const SizedBox(height: 16.0),
+                                  const PatternPicker2Widget(),
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          Container(
-                            color: Colors.grey[500],
-                            width: width * 0.25,
-                            height: 1,
-                          ),
-                          SizedBox(
-                            height: 30.h,
-                          ),
-                          const PatternPicker1Widget(),
-                          const SizedBox(height: 16.0),
-                          const PatternPicker2Widget(),
-                        ],
+                          ]),
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -344,8 +354,8 @@ class custom3 extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ])),
+                    ],
+                  )),
             ]),
           ));
     });

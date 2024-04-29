@@ -29,7 +29,8 @@ class ColorPickerWidget extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 15.h),
           child: Text(
             model.legColor.isNotEmpty ? model.legColor : "색상을 선택하세요",
-            style: TextStyle(color: Colors.white, fontSize: 20.sp),
+            style: const TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
           ),
         ),
         Wrap(
@@ -42,8 +43,8 @@ class ColorPickerWidget extends StatelessWidget {
                 model.setLegColor(color);
               },
               child: Container(
-                width: 50.w,
-                height: 50.h,
+                width: 70.w,
+                height: 100.h,
                 decoration: BoxDecoration(
                   color: isSelected
                       ? Colors.grey
