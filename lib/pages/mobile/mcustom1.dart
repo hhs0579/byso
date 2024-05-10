@@ -629,12 +629,12 @@ class _mcustom1State extends State<mcustom1> {
                                                 Container(
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  child: AutoSizeText(
+                                                  child: const AutoSizeText(
                                                     '라고스',
                                                     maxFontSize: 24,
                                                     style: TextStyle(
                                                         color: Colors.white,
-                                                        fontSize: 14.sp,
+                                                        fontSize: 14,
                                                         fontWeight:
                                                             FontWeight.w800),
                                                   ),
@@ -739,12 +739,12 @@ class _mcustom1State extends State<mcustom1> {
                                                   Container(
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: AutoSizeText(
+                                                    child: const AutoSizeText(
                                                       '디디모스',
                                                       maxFontSize: 24,
                                                       style: TextStyle(
                                                           color: Colors.white,
-                                                          fontSize: 18.sp,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.w800),
                                                     ),
@@ -785,7 +785,7 @@ class _mcustom1State extends State<mcustom1> {
                         // 이 부분에서 model.currentPrice를 UI에 반영합니다.
                         // 예를 들어, 가격을 표시하는 Text 위젯이 있다면 다음과 같이 작성할 수 있습니다.
                         return AutoSizeText(
-                          '${formatPriceWithCommas(model.currentPrice)}원',
+                          '+${formatPriceWithCommas(model.currentPrice)}원',
                           maxFontSize: 60,
                           textAlign: TextAlign.start,
                           style: const TextStyle(

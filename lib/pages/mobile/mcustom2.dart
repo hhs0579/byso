@@ -396,7 +396,7 @@ class _mcustom2State extends State<mcustom2> {
                         // 이 부분에서 model.currentPrice를 UI에 반영합니다.
                         // 예를 들어, 가격을 표시하는 Text 위젯이 있다면 다음과 같이 작성할 수 있습니다.
                         return AutoSizeText(
-                          '${formatPriceWithCommas(model.currentPrice)}원',
+                          '+${formatPriceWithCommas(model.currentPrice)}원',
                           maxFontSize: 60,
                           textAlign: TextAlign.start,
                           style: const TextStyle(

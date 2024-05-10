@@ -43,7 +43,8 @@ dependencies:
   intl:
   url_launcher:
   html:
-  
+  http:
+  sendgrid_mailer:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -43,8 +43,8 @@ class custom4 extends StatelessWidget {
                     backgroundColor: const Color(0xff171717),
                     title: InkWell(
                       onTap: () {
-                         Navigator.of(context)
-                          .push(createRoute(const HomeRoute()));
+                        Navigator.of(context)
+                            .push(createRoute(const HomeRoute()));
                       },
                       child: Container(
                         margin: const EdgeInsets.only(left: 10),
@@ -63,8 +63,8 @@ class custom4 extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                                 Navigator.of(context)
-                          .push(createRoute(const mbyso()));
+                              Navigator.of(context)
+                                  .push(createRoute(const mbyso()));
                             },
                             child: AutoSizeText(
                               'MARBLE INFO',
@@ -254,12 +254,17 @@ class custom4 extends StatelessWidget {
                                 ),
                                 Container(
                                     alignment: Alignment.centerLeft,
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       '배송비',
                                       maxFontSize: 18,
                                       style: TextStyle(
-                                          fontSize: 14.sp, color: Colors.white),
+                                          fontSize: 16,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600),
                                     )),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
                                 const ShippingRegionPickerWidget(),
                               ],
                             ),
@@ -294,7 +299,7 @@ class custom4 extends StatelessWidget {
                                   // 이 부분에서 model.currentPrice를 UI에 반영합니다.
                                   // 예를 들어, 가격을 표시하는 Text 위젯이 있다면 다음과 같이 작성할 수 있습니다.
                                   return AutoSizeText(
-                                    '${formatPriceWithCommas(model.currentPrice)}원',
+                                    '+${formatPriceWithCommas(model.currentPrice)}원',
                                     maxFontSize: 24,
                                     textAlign: TextAlign.start,
                                     style: TextStyle(

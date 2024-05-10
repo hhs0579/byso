@@ -130,7 +130,7 @@ class mPatternPicker2Widget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 11.w, bottom: 20),
             child: const Text(
-              '포세린',
+              '포세린 (원산지 : 이탈리아)',
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,

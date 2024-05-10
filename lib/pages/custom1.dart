@@ -460,7 +460,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                         ),
                                         Container(
                                           alignment: Alignment.centerLeft,
-                                          child: const AutoSizeText(
+                                          child: AutoSizeText(
                                             '샹베리',
                                             maxFontSize: 24,
                                             style: TextStyle(
@@ -520,7 +520,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                             maxFontSize: 24,
                                             style: TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 14.sp,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w800),
                                           ),
                                         ),
@@ -619,7 +619,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                               maxFontSize: 24,
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 18.sp,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w800),
                                             ),
                                           ),
@@ -654,7 +654,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                             // 이 부분에서 model.currentPrice를 UI에 반영합니다.
                             // 예를 들어, 가격을 표시하는 Text 위젯이 있다면 다음과 같이 작성할 수 있습니다.
                             return AutoSizeText(
-                              '${formatPriceWithCommas(model.currentPrice)}원',
+                              '+${formatPriceWithCommas(model.currentPrice)}원',
                               maxFontSize: 24,
                               textAlign: TextAlign.start,
                               style: TextStyle(

@@ -82,7 +82,7 @@ class SummaryWidget extends StatelessWidget {
         Container(
           color: Colors.grey[500],
           height: 1,
-          width: width * 0.2,
+          width: width,
         ),
       ],
     );

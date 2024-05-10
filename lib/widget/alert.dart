@@ -196,7 +196,7 @@ void lengthAlert(BuildContext context) {
                       '확인',
                       maxFontSize: 34,
                       style: TextStyle(
-                          fontSize: 28.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),
@@ -316,7 +316,7 @@ void shippingAlert(BuildContext context) {
                     child: Text(
                       '확인',
                       style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
                     ),
