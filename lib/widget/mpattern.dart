@@ -29,65 +29,69 @@ class mPatternPicker1Widget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 패턴 이름 표시
-        Padding(
-          padding: EdgeInsets.only(left: 11.w, bottom: 20),
-          child: const Text(
+        const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text(
             '천연 대리석 (원산지 : 이탈리아)',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
           ),
         ),
         // 패턴 이미지 표시
-        GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
-            crossAxisSpacing: 0,
-            mainAxisSpacing: 0.0,
-            childAspectRatio: 1,
-          ),
-          itemCount: group1Patterns.length,
-          itemBuilder: (context, index) {
-            final patternName = group1Patterns[index];
-            final imagePath = patterns[patternName];
-            bool isSelected =
-                model.pattern == patternName && model.selectedGroup == 1;
+        SizedBox(
+          height: height * 0.2,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: group1Patterns.length,
+            itemBuilder: (context, index) {
+              final patternName = group1Patterns[index];
+              final imagePath = patterns[patternName];
+              bool isSelected =
+                  model.pattern == patternName && model.selectedGroup == 1;
 
-            return Column(
-              children: [
-                InkWell(
-                  onTap: () => model.setPattern(patternName, 1),
-                  child: Container(
-                    width: width * 0.11,
-                    height: height * 0.07,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(imagePath!),
-                        fit: BoxFit.cover,
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () => model.setPattern(patternName, 1),
+                      child: Container(
+                        width: 88,
+                        height: 88,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(imagePath!),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        child: isSelected
+                            ? Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.black.withOpacity(0.5),
+                                ),
+                                child: const Icon(Icons.check,
+                                    color: Colors.white, size: 24),
+                              )
+                            : null,
                       ),
                     ),
-                    child: isSelected
-                        ? Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            child: const Icon(Icons.check,
-                                color: Colors.white, size: 24),
-                          )
-                        : null,
-                  ),
+                    SizedBox(
+                      width: 88,
+                      child: AutoSizeText(
+                        patternName,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 12),
+                        maxLines: 2,
+                        minFontSize: 10,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Text(
-                    patternName,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                  ),
-                ),
-              ],
-            );
-          },
+              );
+            },
+          ),
         ),
       ],
     );
@@ -124,72 +128,75 @@ class mPatternPicker2Widget extends StatelessWidget {
     }
 
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: 11.w, bottom: 20),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: Text(
               '포세린 (원산지 : 이탈리아)',
               style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
             ),
           ),
-          GridView.builder(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 0.0,
-              mainAxisSpacing: 0.0,
-              childAspectRatio: 1,
-            ),
-            itemCount: group2Patterns.length,
-            itemBuilder: (context, index) {
-              final patternName = group2Patterns[index];
-              final imagePath = patterns[patternName];
-              bool isSelected =
-                  model.pattern == patternName && model.selectedGroup == 2;
+          SizedBox(
+            height: height * 0.2,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: group2Patterns.length,
+              itemBuilder: (context, index) {
+                final patternName = group2Patterns[index];
+                final imagePath = patterns[patternName];
+                bool isSelected =
+                    model.pattern == patternName && model.selectedGroup == 2;
 
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: () => model.setPattern(patternName, 2),
-                    child: Container(
-                      width: width * 0.11,
-                      height: height * 0.07,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(imagePath!),
-                          fit: BoxFit.cover,
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () => model.setPattern(patternName, 2),
+                        child: Container(
+                          width: 88,
+                          height: 88,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(imagePath!),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: isSelected
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.5),
+                                  ),
+                                  child: const Icon(Icons.check,
+                                      color: Colors.white, size: 24),
+                                )
+                              : null,
                         ),
-                        color:
-                            isSelected ? Colors.black.withOpacity(0.5) : null,
                       ),
-                      child: isSelected
-                          ? Container(
-                              decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.5),
-                              ),
-                              child: const Icon(Icons.check,
-                                  color: Colors.white, size: 24),
-                            )
-                          : null,
-                    ),
+                      SizedBox(
+                        width: 88,
+                        child: AutoSizeText(
+                          patternName,
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 12),
+                          maxLines: 2,
+                          minFontSize: 10,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
-                  Center(
-                    child: Text(
-                      patternName,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                  ),
-                ],
-              );
-            },
+                );
+              },
+            ),
           ),
         ],
       ),

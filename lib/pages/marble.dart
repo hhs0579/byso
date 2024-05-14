@@ -108,6 +108,16 @@ class MarbleInfo extends StatelessWidget {
                 height: 50.h,
               ),
               Image.asset('assets/images/m3.png'),
+              Container(
+                height: 50.h,
+              ),
+              Container(
+                  padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                  child: Image.asset('assets/images/m4.png')),
+              Container(
+                height: 50.h,
+              ),
+              Image.asset('assets/images/m5.png'),
             ],
           ),
         ),

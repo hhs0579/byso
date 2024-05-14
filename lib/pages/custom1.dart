@@ -460,7 +460,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                         ),
                                         Container(
                                           alignment: Alignment.centerLeft,
-                                          child: AutoSizeText(
+                                          child: const AutoSizeText(
                                             '샹베리',
                                             maxFontSize: 24,
                                             style: TextStyle(
@@ -515,7 +515,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                         ),
                                         Container(
                                           alignment: Alignment.centerLeft,
-                                          child: AutoSizeText(
+                                          child: const AutoSizeText(
                                             '라고스',
                                             maxFontSize: 24,
                                             style: TextStyle(
@@ -614,7 +614,7 @@ class _custom1State extends State<custom1> with SingleTickerProviderStateMixin {
                                           ),
                                           Container(
                                             alignment: Alignment.centerLeft,
-                                            child: AutoSizeText(
+                                            child: const AutoSizeText(
                                               '디디모스',
                                               maxFontSize: 24,
                                               style: TextStyle(

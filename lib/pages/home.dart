@@ -117,28 +117,28 @@ class home extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 40,
-                          fontWeight: FontWeight.w600)),
+                          fontWeight: FontWeight.w500)),
                   SizedBox(
-                    height: height * 0.01,
+                    height: height * 0.02,
                   ),
                   const Column(
                     children: [
                       Text(
                         'bysometric은 byso의 새로운 커스터마이징 서비스로, 개인의 공간을 자유롭고 창의적으로 꾸밀수 있도록 돕는 서비스입니다.',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         '고객이 가구의 컬러와 재질을 직접 선택하여 자신만의 독특한 공간을 창조할 수 있도록 합니다.',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         'bysometric은 고객의 개성과 취향이 반영된 공간을 만드는 것을 목표로합니다.',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: height * 0.01,
+                    height: height * 0.02,
                   ),
                   InkWell(
                     onTap: () {
@@ -147,8 +147,8 @@ class home extends StatelessWidget {
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      height: 50.h,
-                      width: 100.w,
+                      height: 60.h,
+                      width: 120.w,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white, width: 1),
                         borderRadius: BorderRadius.circular(5),
@@ -158,7 +158,7 @@ class home extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
                   )

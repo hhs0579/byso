@@ -285,9 +285,9 @@ class DeskCustomizationModel with ChangeNotifier {
     '샹베리': {
       '화이트': 'assets/images/leg3.png',
       '블랙': 'assets/images/leg3-2.png',
-    },
+    },  
     '라고스': {
-      '화이트': 'assets/images/leg4.png',
+      '브라운': 'assets/images/leg4.png',
       '블랙': 'assets/images/leg4-2.png',
     },
     '디디모스': {
@@ -295,7 +295,7 @@ class DeskCustomizationModel with ChangeNotifier {
       '블랙': 'assets/images/leg5-2.png',
     },
     '리프 다이닝': {
-      '블랙': 'assets/images/leg7.png',
+      '화이트': 'assets/images/leg7.png',
     },
     // 기타 레그 타입 및 컬러 조합에 대한 이미지 경로 추가...
   };

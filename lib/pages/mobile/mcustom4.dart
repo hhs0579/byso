@@ -131,11 +131,8 @@ class _mcustom4State extends State<mcustom4> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const MarbleInfo()));
+                                    Navigator.of(context)
+                                          .push(createRoute(const mbyso()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))

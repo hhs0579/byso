@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -26,9 +27,9 @@ class PatternPicker1Widget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 패턴 이름 표시
-        Padding(
-          padding: EdgeInsets.only(left: 11.w, bottom: 20),
-          child: const Text(
+        const Padding(
+          padding: EdgeInsets.only(bottom: 20),
+          child: Text(
             '천연 대리석 (원산지 : 이탈리아)',
             style: TextStyle(
                 fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
@@ -52,6 +53,7 @@ class PatternPicker1Widget extends StatelessWidget {
                 model.pattern == patternName && model.selectedGroup == 1;
 
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
                   onTap: () => model.setPattern(patternName, 1),
@@ -75,11 +77,14 @@ class PatternPicker1Widget extends StatelessWidget {
                         : null,
                   ),
                 ),
-                Center(
-                  child: Text(
+                SizedBox(
+                  width: 60.w,
+                  child: AutoSizeText(
                     patternName,
-                    textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.white, fontSize: 14),
+                    maxLines: 2,
+                    minFontSize: 10,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
@@ -96,6 +101,8 @@ class PatternPicker2Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     final model = Provider.of<DeskCustomizationModel>(context);
     final patterns = model.patternImages;
     final availablePatterns = model.getAvailablePatterns();
@@ -123,7 +130,7 @@ class PatternPicker2Widget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 11.w, bottom: 20),
+            padding: EdgeInsets.only( bottom: 20),
             child: const Text(
               '포세린 (원산지 : 이탈리아)',
               style: TextStyle(
@@ -133,12 +140,11 @@ class PatternPicker2Widget extends StatelessWidget {
             ),
           ),
           GridView.builder(
-            padding: EdgeInsets.zero,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 4,
-              crossAxisSpacing: 0.0,
+              crossAxisSpacing: 0,
               mainAxisSpacing: 20.0,
               childAspectRatio: 0.75,
             ),
@@ -150,6 +156,7 @@ class PatternPicker2Widget extends StatelessWidget {
                   model.pattern == patternName && model.selectedGroup == 2;
 
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InkWell(
                     onTap: () => model.setPattern(patternName, 2),
@@ -161,8 +168,6 @@ class PatternPicker2Widget extends StatelessWidget {
                           image: AssetImage(imagePath!),
                           fit: BoxFit.cover,
                         ),
-                        color:
-                            isSelected ? Colors.black.withOpacity(0.5) : null,
                       ),
                       child: isSelected
                           ? Container(
@@ -175,11 +180,14 @@ class PatternPicker2Widget extends StatelessWidget {
                           : null,
                     ),
                   ),
-                  Center(
-                    child: Text(
+                  SizedBox(
+                    width: 60.w,
+                    child: AutoSizeText(
                       patternName,
-                      textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.white, fontSize: 14),
+                      maxLines: 2,
+                      minFontSize: 10,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],

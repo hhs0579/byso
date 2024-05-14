@@ -129,11 +129,8 @@ class _mcustom3State extends State<mcustom3> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const MarbleInfo()));
+                                         Navigator.of(context)
+                                          .push(createRoute(const mbyso()));
                                       },
                                       icon: Icon(Icons.arrow_forward_ios,
                                           color: Colors.white, size: 45.w))
@@ -361,6 +358,14 @@ class _mcustom3State extends State<mcustom3> {
                                 Container(
                                   alignment: Alignment.centerLeft,
                                   child: const mPatternPicker1Widget(),
+                                ),
+                                Container(
+                                  color: Colors.grey[500],
+                                  width: width,
+                                  height: 1,
+                                ),
+                                SizedBox(
+                                  height: 30.h,
                                 ),
                                 Container(
                                   alignment: Alignment.centerLeft,
