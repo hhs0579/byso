@@ -115,6 +115,7 @@ class mPatternPicker2Widget extends StatelessWidget {
       '엑스트라 스타투아리오',
       '칼라카타 오로',
       '칼라카타 글로리',
+      '앱솔루트 화이트',
       '네로 마퀴니아',
       '기타'
     ];

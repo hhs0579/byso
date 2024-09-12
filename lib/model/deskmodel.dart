@@ -285,7 +285,7 @@ class DeskCustomizationModel with ChangeNotifier {
     '샹베리': {
       '화이트': 'assets/images/leg3.png',
       '블랙': 'assets/images/leg3-2.png',
-    },  
+    },
     '라고스': {
       '브라운': 'assets/images/leg4.png',
       '블랙': 'assets/images/leg4-2.png',
@@ -315,6 +315,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/te8.png',
         '스타투아리오': 'assets/images/te9.png',
         '네로 마퀴니아': 'assets/images/te10.png',
+        '앱솔루트 화이트': 'assets/images/te11.png',
         '기타': 'assets/images/te1.png',
         // Add more patterns here
       },
@@ -330,6 +331,8 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/te8-2.png',
         '스타투아리오': 'assets/images/te9-2.png',
         '네로 마퀴니아': 'assets/images/te10-2.png',
+        '앱솔루트 화이트': 'assets/images/te11-2.png',
+
         '기타': 'assets/images/te1-2.png',
         // Add more patterns here
       },
@@ -348,6 +351,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tp8.png',
         '스타투아리오': 'assets/images/tp9.png',
         '네로 마퀴니아': 'assets/images/tp10.png',
+        '앱솔루트 화이트': 'assets/images/tp11.png',
         '기타': 'assets/images/tp1.png',
         // Add more patterns here
       },
@@ -363,6 +367,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tp8-2.png',
         '스타투아리오': 'assets/images/tp9-2.png',
         '네로 마퀴니아': 'assets/images/tp10-2.png',
+        '앱솔루트 화이트': 'assets/images/tp11-2.png',
         '기타': 'assets/images/tp1-2.png',
         // Add more patterns here
       },
@@ -381,6 +386,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/ta8.png',
         '스타투아리오': 'assets/images/ta9.png',
         '네로 마퀴니아': 'assets/images/ta10.png',
+        '앱솔루트 화이트': 'assets/images/ta11.png',
         '기타': 'assets/images/ta1.png',
         // Add more patterns here
       },
@@ -399,6 +405,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tb8.png',
         '스타투아리오': 'assets/images/tb9.png',
         '네로 마퀴니아': 'assets/images/tb10.png',
+        '앱솔루트 화이트': 'assets/images/tb11.png',
         '기타': 'assets/images/tb1.png',
         // Add more patterns here
       },
@@ -414,6 +421,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tb8-2.png',
         '스타투아리오': 'assets/images/tb9-2.png',
         '네로 마퀴니아': 'assets/images/tb10-2.png',
+        '앱솔루트 화이트': 'assets/images/tb11-2.png',
         '기타': 'assets/images/tb1-2.png',
         // Add more patterns here
       },
@@ -432,6 +440,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tc8.png',
         '스타투아리오': 'assets/images/tc9.png',
         '네로 마퀴니아': 'assets/images/tc10.png',
+        '앱솔루트 화이트': 'assets/images/tc11.png',
         '기타': 'assets/images/tc1.png',
         // Add more patterns here
       },
@@ -447,6 +456,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tc8-2.png',
         '스타투아리오': 'assets/images/tc9-2.png',
         '네로 마퀴니아': 'assets/images/tc10-2.png',
+        '앱솔루트 화이트': 'assets/images/tc11-2.png',
         '기타': 'assets/images/tc1-2.png',
         // Add more patterns here
       },
@@ -465,6 +475,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/td8.png',
         '스타투아리오': 'assets/images/td9.png',
         '네로 마퀴니아': 'assets/images/td10.png',
+        '앱솔루트 화이트': 'assets/images/td11.png',
         '기타': 'assets/images/td1.png',
         // Add more patterns here
       },
@@ -480,6 +491,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/td8-2.png',
         '스타투아리오': 'assets/images/td9-2.png',
         '네로 마퀴니아': 'assets/images/td10-2.png',
+        '앱솔루트 화이트': 'assets/images/td11-2.png',
         '기타': 'assets/images/td1-2.png',
         // Add more patterns here
       },
@@ -498,6 +510,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/tf8.png',
         '스타투아리오': 'assets/images/tf9.png',
         '네로 마퀴니아': 'assets/images/tf10.png',
+        '앱솔루트 화이트': 'assets/images/tf11.png',
         '기타': 'assets/images/tf1.png',
         // Add more patterns here
       },
@@ -521,6 +534,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/ca8.png',
         '스타투아리오': 'assets/images/ca9.png',
         '네로 마퀴니아': 'assets/images/ca10.png',
+        '앱솔루트 화이트': 'assets/images/ca11.png',
         '기타': 'assets/images/ca1.png',
         // Add more patterns here
       },
@@ -536,6 +550,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/ca8-2.png',
         '스타투아리오': 'assets/images/ca9-2.png',
         '네로 마퀴니아': 'assets/images/ca10-2.png',
+        '앱솔루트 화이트': 'assets/images/ca11-2.png',
         '기타': 'assets/images/ca1-2.png',
         // Add more patterns here
       },
@@ -554,6 +569,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cb8.png',
         '스타투아리오': 'assets/images/cb9.png',
         '네로 마퀴니아': 'assets/images/cb10.png',
+        '앱솔루트 화이트': 'assets/images/cb11.png',
         '기타': 'assets/images/cb1.png',
         // Add more patterns here
       },
@@ -569,6 +585,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cb8-2.png',
         '스타투아리오': 'assets/images/cb9-2.png',
         '네로 마퀴니아': 'assets/images/cb10-2.png',
+        '앱솔루트 화이트': 'assets/images/cb11-2.png',
         '기타': 'assets/images/cb1-2.png',
 
         // Add more patterns here
@@ -588,6 +605,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cc8.png',
         '스타투아리오': 'assets/images/cc9.png',
         '네로 마퀴니아': 'assets/images/cc10.png',
+        '앱솔루트 화이트': 'assets/images/cc11.png',
         '기타': 'assets/images/cc1.png',
         // Add more patterns here
       },
@@ -606,6 +624,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cd8.png',
         '스타투아리오': 'assets/images/cd9.png',
         '네로 마퀴니아': 'assets/images/cd10.png',
+        '앱솔루트 화이트': 'assets/images/cd11.png',
         '기타': 'assets/images/cd1.png',
         // Add more patterns here
       },
@@ -621,6 +640,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cd8-2.png',
         '스타투아리오': 'assets/images/cd9-2.png',
         '네로 마퀴니아': 'assets/images/cd10-2.png',
+        '앱솔루트 화이트': 'assets/images/cd11-2.png',
         '기타': 'assets/images/cd1-2.png',
         // Add more patterns here
       },
@@ -639,6 +659,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/ce8.png',
         '스타투아리오': 'assets/images/ce9.png',
         '네로 마퀴니아': 'assets/images/ce10.png',
+        '앱솔루트 화이트': 'assets/images/ce11.png',
         '기타': 'assets/images/ce1.png',
         // Add more patterns here
       },
@@ -654,6 +675,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/ce8-2.png',
         '스타투아리오': 'assets/images/ce9-2.png',
         '네로 마퀴니아': 'assets/images/ce10-2.png',
+        '앱솔루트 화이트': 'assets/images/ce11-2.png',
         '기타': 'assets/images/ce1-2.png',
         // Add more patterns here
       },
@@ -672,6 +694,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cf8.png',
         '스타투아리오': 'assets/images/cf9.png',
         '네로 마퀴니아': 'assets/images/cf10.png',
+        '앱솔루트 화이트': 'assets/images/cf11.png',
         '기타': 'assets/images/cf1.png',
         // Add more patterns here
       },
@@ -687,6 +710,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cf8-2.png',
         '스타투아리오': 'assets/images/cf9-2.png',
         '네로 마퀴니아': 'assets/images/cf10-2.png',
+        '앱솔루트 화이트': 'assets/images/cf11-2.png',
         '기타': 'assets/images/cf1-2.png',
         // Add more patterns here
       },
@@ -705,6 +729,7 @@ class DeskCustomizationModel with ChangeNotifier {
         '아라베스카토': 'assets/images/cg8.png',
         '스타투아리오': 'assets/images/cg9.png',
         '네로 마퀴니아': 'assets/images/cg10.png',
+        '앱솔루트 화이트': 'assets/images/cg11.png',
         '기타': 'assets/images/cg1.png',
         // Add more patterns here
       },
@@ -753,6 +778,7 @@ class DeskCustomizationModel with ChangeNotifier {
     '아라베스카토': 'assets/images/p8.png',
     '스타투아리오': 'assets/images/p9.png',
     '네로 마퀴니아': 'assets/images/p10.png',
+    '앱솔루트 화이트': 'assets/images/p12.png',
     '기타': 'assets/images/p11.png',
   };
 
@@ -776,6 +802,7 @@ class DeskCustomizationModel with ChangeNotifier {
     '엑스트라 스타투아리오': 0,
     '칼라카타 오로': 0,
     '칼라카타 글로리': 0,
+    '앱솔루트 화이트': 0,
     '비앙코': 100000,
     '아라베스카토': 300000,
     '스타투아리오': 200000,

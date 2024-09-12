@@ -12,7 +12,14 @@ class PatternPicker1Widget extends StatelessWidget {
     final model = Provider.of<DeskCustomizationModel>(context);
     final patterns = model.patternImages;
     final availablePatterns = model.getAvailablePatterns();
-    final group1Patterns = ['스타투아리오', '비앙코', '아라베스카토', '네로 마퀴니아', '기타'];
+    final group1Patterns = [
+      '스타투아리오',
+      '비앙코',
+      '아라베스카토',
+  
+      '네로 마퀴니아',
+      '기타'
+    ];
 
     // 사용 가능한 패턴 중 첫 번째 패턴을 기본값으로 설정
     if (!availablePatterns.contains(model.pattern)) {
@@ -113,6 +120,7 @@ class PatternPicker2Widget extends StatelessWidget {
       '엑스트라 스타투아리오',
       '칼라카타 오로',
       '칼라카타 글로리',
+          '앱솔루트 화이트',
       '네로 마퀴니아',
       '기타'
     ];
@@ -129,9 +137,9 @@ class PatternPicker2Widget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only( bottom: 20),
-            child: const Text(
+          const Padding(
+            padding: EdgeInsets.only(bottom: 20),
+            child: Text(
               '포세린 (원산지 : 이탈리아)',
               style: TextStyle(
                   fontSize: 16,
